@@ -1,4 +1,4 @@
-# Reproducing Unsupervised Syntehsis of Audio via Exemplar Encoders
+# Reproducing Unsupervised Synthesis of Audio via Exemplar Encoders
 
 This repository is the official implementation of our Reproducibility Paper for CISC 867
 
