@@ -33,7 +33,13 @@ class VCTKDataset(torch.utils.data.Dataset):
         audio = librosa.resample(audio, orig_sr=sr, target_sr=16000)
 
         # convert to spectrogram
-        spectro = librosa.feature.melspectrogram()
+        # https://librosa.org/doc/main/generated/librosa.feature.melspectrogram.html
+        spectro = librosa.feature.melspectrogram(
+            y=audio,
+            sr=16000,
+            win_length=800,
+            hop_length=200
+        )
         return text, spectro
         # return text, audio
 
