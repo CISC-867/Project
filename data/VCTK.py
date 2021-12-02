@@ -32,12 +32,13 @@ class VCTKDataset(torch.utils.data.Dataset):
 
         # load audio, also get sample rate
         audio, sr = librosa.load(audio)
-
+        # trim silence
+        audio, _ = librosa.effects.trim(audio)
         # convert from 48khz to 16khz for efficiency
         audio = librosa.resample(audio, orig_sr=sr, target_sr=self.sample_rate)
-
         # convert to spectrogram
         # https://librosa.org/doc/main/generated/librosa.feature.melspectrogram.html
+        # https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0
         spectro = librosa.feature.melspectrogram(
             y=audio,
             sr=self.sample_rate,
@@ -45,6 +46,7 @@ class VCTKDataset(torch.utils.data.Dataset):
             hop_length=self.hop_length,
             n_mels=self.n_mels,
         )
+        
         return text, spectro
         # return text, audio
 
@@ -52,6 +54,7 @@ class VCTKDataset(torch.utils.data.Dataset):
         return len(self.data)
 
     def show(self, entry):
+        # https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0
         import matplotlib.pyplot as plt
         text, mel_spectro = entry
         librosa.display.specshow(
