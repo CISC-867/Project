@@ -24,7 +24,9 @@ class VCTKDataset(torch.utils.data.Dataset):
     def __getitem__(self, index):
         text, audio = self.data[index]
         audio = librosa.load(audio)
-        return text, audio
+        audio = librosa.resample(audio,)
+        spectro = librosa.feature.melspectrogram()
+        return text, spectro
 
     def __len__(self):
         return len(self.data)
