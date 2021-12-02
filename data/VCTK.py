@@ -10,15 +10,17 @@ class VCTKDataset(Dataset):
         
         # load file paths
         text_file_paths = sorted(glob(join(path, "txt", "*", "*.txt")))
-        audio_file_paths = sorted(glob(join(path, "wav48", "*", "*.txt")))
-        
+        audio_file_paths = sorted(glob(join(path, "wav48", "*", "*.wav")))
         self.data = []
 
         for text, audio in zip(text_file_paths, audio_file_paths):
             # sanity check
             assert basename(splitext(text)[0]) == basename(splitext(audio)[0])
 
-            self.data += (text, audio)
+            self.data += [(text, audio)]
 
     def __getitem__(self, index):
         return self.data[index]
+
+    def __len__(self):
+        return len(self.data)
