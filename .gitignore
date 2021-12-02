@@ -2,3 +2,4 @@ venv/
 *.pyc
 ForwardTacotron/
 VCTK-Corpus*/
+VCTK-Corpus*.*
