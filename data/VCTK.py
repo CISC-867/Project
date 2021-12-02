@@ -18,12 +18,13 @@ class VCTKDataset(torch.utils.data.Dataset):
             # sanity check
             assert os.path.basename(os.path.splitext(text)[0]) == os.path.basename(os.path.splitext(audio)[0])
 
-            audio = librosa.load(audio)
 
             self.data += [(text, audio)]
 
     def __getitem__(self, index):
-        return self.data[index]
+        text, audio = self.data[index]
+        audio = librosa.load(audio)
+        return text, audio
 
     def __len__(self):
         return len(self.data)
