@@ -1,21 +1,24 @@
 import torch
-from torch.utils.data import Dataset, DataLoader
+import os
+import glob
+import librosa
 
-from glob import glob
-from os.path import join, basename, splitext
+import tqdm.notebook as tqdm
 
-class VCTKDataset(Dataset):
+class VCTKDataset(torch.utils.data.Dataset):
     def __init__(self, path) -> None:
         super().__init__()
         
         # load file paths
-        text_file_paths = sorted(glob(join(path, "txt", "*", "*.txt")))
-        audio_file_paths = sorted(glob(join(path, "wav48", "*", "*.wav")))
+        text_file_paths = sorted(glob.glob(os.path.join(path, "txt", "*", "*.txt")))
+        audio_file_paths = sorted(glob.glob(os.path.join(path, "wav48", "*", "*.wav")))
         self.data = []
 
-        for text, audio in zip(text_file_paths, audio_file_paths):
+        for text, audio in tqdm.tqdm(list(zip(text_file_paths, audio_file_paths))):
             # sanity check
-            assert basename(splitext(text)[0]) == basename(splitext(audio)[0])
+            assert os.path.basename(os.path.splitext(text)[0]) == os.path.basename(os.path.splitext(audio)[0])
+
+            audio = librosa.load(audio)
 
             self.data += [(text, audio)]
 
