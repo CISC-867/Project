@@ -17,7 +17,12 @@ class MyModel(nn.Module):
 
     def forward(self, mel_spectro):
         x = mel_spectro
+        print(x.shape)
         x = self.batch1(F.relu(self.conv1(x)))
+        print(x.shape)
         x = self.batch2(F.relu(self.conv2(x)))
+        print(x.shape)
         x = self.batch3(F.relu(self.conv3(x)))
+        print(x.shape)
+        x = self.lstm(x)
         return x
