@@ -30,7 +30,7 @@ class VCTKDataset(torch.utils.data.Dataset):
         # read transcript
         with open(text, "r") as handle:
             text = "".join([line for line in handle.readlines()]).strip()
-
+        
         # load audio, also get sample rate
         audio, sr = librosa.load(audio)
         # trim silence
@@ -56,7 +56,7 @@ class VCTKDataset(torch.utils.data.Dataset):
             )
             clips.append(spectro)
         
-        return text, clips
+        return text, torch.tensor(clips)
         # return text, audio
 
     def __len__(self):
