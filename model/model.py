@@ -2,6 +2,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+import sys
+import os.path
+
+sys.path.append(os.path.abspath("ForwardTacotron"))
+from models.fatchord_version import WaveRNN
+
+
 class MyModel(nn.Module):
     def __init__(self) -> None:
         super(MyModel, self).__init__()
@@ -12,7 +19,7 @@ class MyModel(nn.Module):
         self.batch2 = nn.BatchNorm1d(num_features=512)
         self.conv3 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5)
         self.batch3 = nn.BatchNorm1d(num_features=512)
-
+        
         self.lstm1 = nn.LSTM(
             input_size=512,
             hidden_size=32,
@@ -29,11 +36,11 @@ class MyModel(nn.Module):
             batch_first=True
         )
 
-        self.conv4 = nn.Conv1d(in_channels=1024, out_channels=512, kernel_size=5)
+        self.conv4 = nn.Conv1d(in_channels=1024, out_channels=512, kernel_size=5, padding="same")
         self.batch4 = nn.BatchNorm1d(num_features=512)
-        self.conv5 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5)
+        self.conv5 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5, padding="same")
         self.batch5 = nn.BatchNorm1d(num_features=512)
-        self.conv6 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5)
+        self.conv6 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5, padding="same")
         self.batch6 = nn.BatchNorm1d(num_features=512)
 
         self.lstm3 = nn.LSTM(
@@ -47,6 +54,21 @@ class MyModel(nn.Module):
         self.dense = nn.Linear(
             in_features=2048,
             out_features=80
+        )
+
+        self.vocoder = WaveRNN(
+            rnn_dims=512,
+            fc_dims=512,
+            bits=9, # OrigAuthor: bit depth of signal
+            pad=2, # OrigAuthor: this will pad the input so that the resnet can 'see' wider than input length
+            upsample_factors=(5, 5, 8), # OrigAuthor: NB - this needs to correctly factorise hop_length
+            feat_dims=80,
+            compute_dims=128,
+            res_out_dims=128,
+            res_blocks=10,
+            hop_length=200,
+            sample_rate=16000,
+            mode="RAW", # OrigAuthor: either 'RAW' (softmax on raw bits) or 'MOL' (sample from mixture of logistics)
         )
 
     def forward(self, mel_spectro):
