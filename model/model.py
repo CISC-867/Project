@@ -40,14 +40,20 @@ class MyModel(nn.Module):
 
         # ignore final hidden state
         x, _ = self.lstm1(x)
-        print(x.shape)
+        print(x.shape, end="\n\n")
 
-        # the length of the last dimension is 2*hidden, forward+backward concat
-        # first half of the features is the forward pass
-        x_forward = x[:, :, :self.lstm_hidden_size]
-        print(x_forward.shape)
-        # first half of the features is the backward pass
-        x_backward = x[:,:, self.lstm_hidden_size:]
-        print(x_backward.shape, end="\n\n")
-        # x, _ = self.lstm2(x)
-        return x, x_forward, x_backward
+
+        ### tech from original paper, not really used lol
+        # # the length of the last dimension is 2*hidden, forward+backward concat
+        # # first half of the features is the forward pass
+        # x_forward = x[:, :, :self.lstm_hidden_size]
+        # print(x_forward.shape)
+        # # first half of the features is the backward pass
+        # x_backward = x[:,:, self.lstm_hidden_size:]
+        # print(x_backward.shape, end="\n\n")
+        
+        reduction_factor = 32 # take every 32nd sample
+        x = x[:,::reduction_factor,:]
+        print(x.shape, end="\n\n")
+
+        return x
