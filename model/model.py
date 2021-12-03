@@ -21,8 +21,8 @@ class MyModel(nn.Module):
             batch_first=True
         )
         self.lstm2 = nn.LSTM(
-            input_size=512,
-            hidden_size=32,
+            input_size=64,
+            hidden_size=512,
             num_layers=1,
             bidirectional=True,
             batch_first=True
