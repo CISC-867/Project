@@ -82,7 +82,6 @@ class VCTKDataset(torch.utils.data.Dataset):
     
     def show_audios(self, audios):
         import matplotlib.pyplot as plt
-        print("wtf")
         for v in audios:
             fix, ax = plt.subplots()
             img = librosa.display.waveplot(v.detach().numpy(), sr=16000)
