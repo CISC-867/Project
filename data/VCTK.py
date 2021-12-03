@@ -43,6 +43,7 @@ class VCTKDataset(torch.utils.data.Dataset):
         audio = librosa.util.fix_length(audio, full_length)
 
         clips = []
+        spectros = []
         for clip in audio.reshape((-1, self.clip_length)):
             # convert to spectrogram
             # https://librosa.org/doc/main/generated/librosa.feature.melspectrogram.html
@@ -54,18 +55,19 @@ class VCTKDataset(torch.utils.data.Dataset):
                 hop_length=self.hop_length,
                 n_mels=self.n_mels,
             )
-            clips.append(spectro)
-        
-        return text, torch.tensor(clips)
+            # clips.append(spectro)
+            clips.append(clip)
+            spectros.append(spectro)
+
+        return text, torch.tensor(clips), torch.tensor(spectros)
         # return text, audio
 
     def __len__(self):
         return len(self.data)
 
-    def show(self, entry):
+    def show_spectros(self, spectros):
         # https://towardsdatascience.com/getting-to-know-the-mel-spectrogram-31bca3e2d9d0
         import matplotlib.pyplot as plt
-        text, spectros = entry
         for v in spectros:
             fig, ax = plt.subplots()
             img = librosa.display.specshow(

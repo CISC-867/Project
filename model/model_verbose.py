@@ -9,9 +9,9 @@ sys.path.append(os.path.abspath("ForwardTacotron"))
 from models.fatchord_version import WaveRNN
 
 
-class SpectrogramModel(nn.Module):
+class MyModel(nn.Module):
     def __init__(self) -> None:
-        super(SpectrogramModel, self).__init__()
+        super(MyModel, self).__init__()
 
         self.conv1 = nn.Conv1d(in_channels=80, out_channels=512, kernel_size=5)
         self.batch1 = nn.BatchNorm1d(num_features=512)
@@ -58,48 +58,54 @@ class SpectrogramModel(nn.Module):
 
     def forward(self, mel_spectro):
         x = mel_spectro
+        print(x.shape, "input")
+
         x = self.batch1(F.relu(self.conv1(x)))
+        print(x.shape, "conv-batch-1 out")
+
         x = self.batch2(F.relu(self.conv2(x)))
+        print(x.shape, "conv-batch-2 out")
+
         x = self.batch3(F.relu(self.conv3(x)))
+        print(x.shape, "conv-batch-3 out")
+
         x = x.transpose(2,1)
+        print(x.shape, "transpose out")
+
         x, _ = self.lstm1(x) # ignore final hidden state
+        print(x.shape, "lstm-1 out")
+
         # downsampling, take every 32nd sample
         reduction_factor = 32 
         x = x[:,::reduction_factor,:]
+        print(x.shape, "downsampled out")
+
         # upsampling, repeat every sample 32 times
         x = x.repeat(1,1,reduction_factor).reshape(x.size(0),-1,x.size(2))
+        print(x.shape, "upsampled out")
+
         x, _ = self.lstm2(x)
+        print(x.shape, "lstm-2 out")
+
         x = x.transpose(2,1)
+        print(x.shape, "transpose out")
+
         x = self.batch1(F.relu(self.conv4(x)))
+        print(x.shape, "conv-batch-4 out")
+
         x = self.batch2(F.relu(self.conv5(x)))
+        print(x.shape, "conv-batch-5 out")
+
         x = self.batch3(F.relu(self.conv6(x)))
+        print(x.shape, "conv-batch-6 out")
+
         x = x.transpose(2,1)
+        print(x.shape, "transpose out")
+
         x, _ = self.lstm3(x)
+        print(x.shape, "lstm-3 out")
+
         x = self.dense(x)
-        return x
+        print(x.shape, "dense out")
 
-class FullModel(nn.Module):
-    def __init__(self) -> None:
-        super(FullModel, self).__init__()
-        self.spectro = SpectrogramModel()
-
-        self.vocoder = WaveRNN(
-            rnn_dims=512,
-            fc_dims=512,
-            bits=9, # OrigAuthor: bit depth of signal
-            pad=2, # OrigAuthor: this will pad the input so that the resnet can 'see' wider than input length
-            upsample_factors=(5, 5, 8), # OrigAuthor: NB - this needs to correctly factorise hop_length
-            feat_dims=80,
-            compute_dims=128,
-            res_out_dims=128,
-            res_blocks=10,
-            hop_length=200,
-            sample_rate=16000,
-            mode="RAW", # OrigAuthor: either 'RAW' (softmax on raw bits) or 'MOL' (sample from mixture of logistics)
-        )
-
-    def forward(self, mel_spectros):
-        x = mel_spectros
-        x = self.spectro(x)
-        x = self.vocoder(x, 80)
         return x
