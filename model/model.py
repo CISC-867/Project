@@ -28,6 +28,13 @@ class MyModel(nn.Module):
             batch_first=True
         )
 
+        self.conv4 = nn.Conv1d(in_channels=1024, out_channels=512, kernel_size=5)
+        self.batch4 = nn.BatchNorm1d(num_features=512)
+        self.conv5 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5)
+        self.batch5 = nn.BatchNorm1d(num_features=512)
+        self.conv6 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5)
+        self.batch6 = nn.BatchNorm1d(num_features=512)
+
     def forward(self, mel_spectro):
         x = mel_spectro
         print(x.shape, "input", end="\n\n")
@@ -58,5 +65,17 @@ class MyModel(nn.Module):
 
         x, _ = self.lstm2(x)
         print(x.shape, "lstm-2 out")
+
+        x = x.transpose(2,1)
+        print(x.shape, "transpose out", end="\n\n")
+
+        x = self.batch1(F.relu(self.conv4(x)))
+        print(x.shape, "conv-batch-4 out", end="\n\n")
+
+        x = self.batch2(F.relu(self.conv5(x)))
+        print(x.shape, "conv-batch-5 out", end="\n\n")
+
+        x = self.batch3(F.relu(self.conv6(x)))
+        print(x.shape, "conv-batch-6 out", end="\n\n")
 
         return x
