@@ -56,4 +56,7 @@ class MyModel(nn.Module):
         x = x[:,::reduction_factor,:]
         print(x.shape, end="\n\n")
 
+        x = x.repeat(1,1,reduction_factor).reshape(x.size(0),-1,x.size(2))
+        print(x.shape, end="\n\n")
+
         return x
