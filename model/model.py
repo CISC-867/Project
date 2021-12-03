@@ -13,14 +13,20 @@ class MyModel(nn.Module):
         self.conv3 = nn.Conv1d(in_channels=512, out_channels=512, kernel_size=5)
         self.batch3 = nn.BatchNorm1d(num_features=512)
 
-        self.lstm_hidden_size=32
         self.lstm1 = nn.LSTM(
             input_size=512,
-            hidden_size=self.lstm_hidden_size,
+            hidden_size=32,
+            num_layers=2,
             bidirectional=True,
             batch_first=True
         )
-        # self.lstm2 = nn.LSTM(input_size=512, hidden_size=self.lstm_hidden_size, bidirectional=True, batch_first=True)
+        self.lstm2 = nn.LSTM(
+            input_size=512,
+            hidden_size=32,
+            num_layers=1,
+            bidirectional=True,
+            batch_first=True
+        )
 
     def forward(self, mel_spectro):
         x = mel_spectro
@@ -39,7 +45,7 @@ class MyModel(nn.Module):
         print(x.shape, "transpose out", end="\n\n")
 
         x, _ = self.lstm1(x) # ignore final hidden state
-        print(x.shape, "lstm out", end="\n\n")
+        print(x.shape, "lstm-1 out", end="\n\n")
 
         # downsampling, take every 32nd sample
         reduction_factor = 32 
@@ -49,5 +55,8 @@ class MyModel(nn.Module):
         # upsampling, repeat every sample 32 times
         x = x.repeat(1,1,reduction_factor).reshape(x.size(0),-1,x.size(2))
         print(x.shape, "upsampled out", end="\n\n")
+
+        x, _ = self.lstm2(x)
+        print(x.shape, "lstm-2 out")
 
         return x
