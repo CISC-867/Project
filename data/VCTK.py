@@ -18,22 +18,36 @@ def download_dataset(version, save_path):
     archive_path = os.path.join(save_path, filename)
     base, ext = os.path.splitext(os.path.basename(archive_path))
     destination = os.path.join(os.path.dirname(archive_path), base)
-    if (os.path.exists(destination)):
+    if os.path.exists(destination):
         print("already extracted")
         return
 
-    import urllib.request
-    import shutil
-    with urllib.request.urlopen(url) as response, open(archive_path, "wb") as out_file:
-        shutil.copyfileobj(response, out_file)
+    # import urllib.request
+    # import requests.utils
+    # print("got",url)
+    # url = requests.utils.requote_uri(url)
+    import requests
+    if not os.path.exists(archive_path):
+        print(f"downloading archive")
+        with open(archive_path, "wb") as out:
+            req = requests.get(url)
+            out.write(req.content)
+    else:
+        print("archive already downloaded")
+        # urllib.request.urlretrieve(url, archive_path)
 
-    import tarfile
-    if ext == ".tar.gz":
-        print("tar.gz")
-    elif ext == ".tar":
-        print("tar")
-    elif ext == ".7z":
-        print("7z")
+
+    print("extracting archive")
+    import shutil
+    shutil.unpack_archive(archive_path, destination)
+    # import tarfile
+    # if ext == ".tar.gz":
+    #     print("tar.gz")
+    # elif ext == ".tar":
+    #     print("tar")
+    # elif ext == ".7z":
+    #     print("7z")
+
 class VCTKDataset(torch.utils.data.Dataset):
     def __init__(self, path) -> None:
         super().__init__()
