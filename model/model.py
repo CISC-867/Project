@@ -84,8 +84,7 @@ class FullModel(nn.Module):
         self.spectro = SpectrogramModel()
 
         self.vocoder = WaveRNN(
-            # rnn_dims=512,
-            rnn_dims=1,
+            rnn_dims=512,
             fc_dims=512,
             bits=9, # OrigAuthor: bit depth of signal
             pad=2, # OrigAuthor: this will pad the input so that the resnet can 'see' wider than input length
