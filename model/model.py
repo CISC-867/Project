@@ -14,8 +14,13 @@ class MyModel(nn.Module):
         self.batch3 = nn.BatchNorm1d(num_features=512)
 
         self.lstm_hidden_size=32
-        self.lstm1 = nn.LSTM(input_size=512, hidden_size=self.lstm_hidden_size, bidirectional=True, batch_first=True)
-        self.lstm2 = nn.LSTM(input_size=512, hidden_size=self.lstm_hidden_size, bidirectional=True, batch_first=True)
+        self.lstm1 = nn.LSTM(
+            input_size=512,
+            hidden_size=self.lstm_hidden_size,
+            bidirectional=True,
+            batch_first=True
+        )
+        # self.lstm2 = nn.LSTM(input_size=512, hidden_size=self.lstm_hidden_size, bidirectional=True, batch_first=True)
 
     def forward(self, mel_spectro):
         x = mel_spectro
@@ -33,8 +38,10 @@ class MyModel(nn.Module):
         x = x.transpose(2,1)
         print(x.shape, end="\n\n")
 
+        # ignore final hidden state
         x, _ = self.lstm1(x)
         print(x.shape)
+
         x_forward = x[:, :, :self.lstm_hidden_size]
         print(x_forward.shape)
         x_backward = x[:,:, self.lstm_hidden_size:]
