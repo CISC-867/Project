@@ -44,6 +44,11 @@ class MyModel(nn.Module):
             batch_first=True
         )
 
+        self.dense = nn.Linear(
+            in_features=2048,
+            out_features=80
+        )
+
     def forward(self, mel_spectro):
         x = mel_spectro
         print(x.shape, "input")
@@ -92,5 +97,8 @@ class MyModel(nn.Module):
 
         x, _ = self.lstm3(x)
         print(x.shape, "lstm-3 out")
-        
+
+        x = self.dense(x)
+        print(x.shape, "dense out")
+
         return x
