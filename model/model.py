@@ -84,7 +84,8 @@ class FullModel(nn.Module):
         self.spectro = SpectrogramModel()
 
         self.vocoder = WaveRNN(
-            rnn_dims=512,
+            # rnn_dims=512,
+            rnn_dims=1,
             fc_dims=512,
             bits=9, # OrigAuthor: bit depth of signal
             pad=2, # OrigAuthor: this will pad the input so that the resnet can 'see' wider than input length
@@ -98,8 +99,9 @@ class FullModel(nn.Module):
             mode="RAW", # OrigAuthor: either 'RAW' (softmax on raw bits) or 'MOL' (sample from mixture of logistics)
         )
 
-    def forward(self, mel_spectros):
-        x = mel_spectros
-        x = self.spectro(x)
-        x = self.vocoder(x, 80)
-        return x
+    def forward(self, clips, spectros):
+        spectros = self.spectro(spectros)
+        spectros = spectros.transpose(2,1)
+        print(clips.shape, spectros.shape)
+        y_pred = self.vocoder(clips, spectros)
+        return y_pred
