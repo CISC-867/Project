@@ -24,39 +24,30 @@ class MyModel(nn.Module):
 
     def forward(self, mel_spectro):
         x = mel_spectro
-        print(x.shape, end="\n\n")
+        print(x.shape, "input", end="\n\n")
 
         x = self.batch1(F.relu(self.conv1(x)))
-        print(x.shape, end="\n\n")
+        print(x.shape, "conv-batch-1 out", end="\n\n")
 
         x = self.batch2(F.relu(self.conv2(x)))
-        print(x.shape, end="\n\n")
+        print(x.shape, "conv-batch-2 out", end="\n\n")
 
         x = self.batch3(F.relu(self.conv3(x)))
-        print(x.shape, end="\n\n")
+        print(x.shape, "conv-batch-3 out", end="\n\n")
 
         x = x.transpose(2,1)
-        print(x.shape, end="\n\n")
+        print(x.shape, "transpose out", end="\n\n")
 
-        # ignore final hidden state
-        x, _ = self.lstm1(x)
-        print(x.shape, end="\n\n")
+        x, _ = self.lstm1(x) # ignore final hidden state
+        print(x.shape, "lstm out", end="\n\n")
 
-
-        ### tech from original paper, not really used lol
-        # # the length of the last dimension is 2*hidden, forward+backward concat
-        # # first half of the features is the forward pass
-        # x_forward = x[:, :, :self.lstm_hidden_size]
-        # print(x_forward.shape)
-        # # first half of the features is the backward pass
-        # x_backward = x[:,:, self.lstm_hidden_size:]
-        # print(x_backward.shape, end="\n\n")
-        
-        reduction_factor = 32 # take every 32nd sample
+        # downsampling, take every 32nd sample
+        reduction_factor = 32 
         x = x[:,::reduction_factor,:]
-        print(x.shape, end="\n\n")
+        print(x.shape, "downsampled out", end="\n\n")
 
+        # upsampling, repeat every sample 32 times
         x = x.repeat(1,1,reduction_factor).reshape(x.size(0),-1,x.size(2))
-        print(x.shape, end="\n\n")
+        print(x.shape, "upsampled out", end="\n\n")
 
         return x
