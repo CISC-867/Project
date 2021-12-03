@@ -42,8 +42,11 @@ class MyModel(nn.Module):
         x, _ = self.lstm1(x)
         print(x.shape)
 
+        # the length of the last dimension is 2*hidden, forward+backward concat
+        # first half of the features is the forward pass
         x_forward = x[:, :, :self.lstm_hidden_size]
         print(x_forward.shape)
+        # first half of the features is the backward pass
         x_backward = x[:,:, self.lstm_hidden_size:]
         print(x_backward.shape, end="\n\n")
         # x, _ = self.lstm2(x)
