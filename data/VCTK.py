@@ -6,16 +6,27 @@ import numpy as np
 import math
 
 class VCTKDataset(torch.utils.data.Dataset):
-    def __init__(self, path, randomize=True) -> None:
+    def __init__(
+        self,
+        path=None,
+        text_file_paths=None,
+        audio_file_paths=None,
+        randomize=True
+    ) -> None:
         super().__init__()
+        assert path is None if text_file_paths is not None or audio_file_paths is not None else True
+        assert text_file_paths is None if path is not None else True
+        assert audio_file_paths is None if path is not None else True
+        
         self.sample_rate=16000
         self.win_length=800
         self.hop_length=200
         self.n_mels=80
         self.clip_length=int(self.sample_rate*1.6)
         # load file paths
-        text_file_paths = sorted(glob.glob(os.path.join(path, "txt", "*", "*.txt")))
-        audio_file_paths = sorted(glob.glob(os.path.join(path, "wav48", "*", "*.wav")))
+        if path is not None:
+            text_file_paths = sorted(glob.glob(os.path.join(path, "txt", "**", "*.txt")))
+            audio_file_paths = sorted(glob.glob(os.path.join(path, "wav48", "**", "*.wav")))
         self.data = []
 
         for text, audio in zip(text_file_paths, audio_file_paths):

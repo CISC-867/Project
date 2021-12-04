@@ -52,7 +52,10 @@ class Trainer:
         vocoder=None,
         device=None,
         checkpoint=None,
-        load_from_checkpoint=False
+        checkpoint_dir="checkpoints",
+        model_checkpoint_pattern="model{}.pth",
+        vocoder_checkpoint_pattern="model{}_vocoder.pth",
+        load_from_checkpoint=False,
     ) -> None:
         if device is None:
             device = torch.device("cpu")
@@ -70,8 +73,8 @@ class Trainer:
             if checkpoint is None:
                 raise ValueError("Checkpoint can't be None when loading")
             print(f"Loading models from checkpoint {checkpoint}")
-            Trainer.load_from(model, f"model{checkpoint}.pth")
-            Trainer.load_from(vocoder, f"model{checkpoint}_vocoder.pth")
+            Trainer.load_from(model, model_checkpoint_pattern.format(checkpoint), dir=checkpoint_dir)
+            Trainer.load_from(vocoder, vocoder_checkpoint_pattern.format(checkpoint), dir=checkpoint_dir)
             print("Models loaded")
 
         if checkpoint is None:
@@ -80,6 +83,9 @@ class Trainer:
         self.vocoder = vocoder.to(device)
         self.device = device
         self.checkpoint = checkpoint
+        self.checkpoint_dir = checkpoint_dir
+        self.model_checkpoint_pattern = model_checkpoint_pattern
+        self.vocoder_checkpoint_pattern = vocoder_checkpoint_pattern
         self.model_optimizer = torch.optim.Adam(model.parameters(), lr=0.001)  
         self.vocoder_optimizer = torch.optim.Adam(vocoder.parameters(), lr=0.001)  
         self.spectro_loss_func = nn.L1Loss()
@@ -188,8 +194,8 @@ class Trainer:
             print(f"Saving checkpoint {self.checkpoint}")
         except BrokenPipeError:
             pass
-        Trainer.save_as(self.model, f"model{self.checkpoint}.pth")
-        Trainer.save_as(self.vocoder, f"model{self.checkpoint}_vocoder.pth")
+        Trainer.save_as(self.model, self.model_checkpoint_pattern.format(self.checkpoint), dir=self.checkpoint_dir)
+        Trainer.save_as(self.vocoder, self.vocoder_checkpoint_pattern.format(self.checkpoint), dir=self.checkpoint_dir)
         try:
             print("Saved")
         except BrokenPipeError:
