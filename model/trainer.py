@@ -137,15 +137,26 @@ class Trainer:
         import torch.utils.tensorboard
         writer = torch.utils.tensorboard.SummaryWriter(run_name)
 
+        cpu = torch.device("cpu")
+
         for epoch in range(epochs):
             for i, entry in enumerate(dataset.batched(batch_size)):
-                losses = self.train_step(entry)[:3] # ignore predicted values
+                total_loss, spectro_loss, vocoder_loss = self.train_step(entry)[:3] # ignore predicted values
+                total_loss = total_loss.detach().to(cpu).numpy()
+                spectro_loss = spectro_loss.detach().to(cpu).numpy()
+                vocoder_loss = vocoder_loss.detach().to(cpu).numpy()
                 if (i+1) % log_every_n == 0:
-                    Trainer.show_loss(epoch, f"{i}/{total_batches}", *losses)
+                    Trainer.show_loss(
+                        epoch,
+                        f"{i}/{total_batches}",
+                        total_loss,
+                        spectro_loss,
+                        vocoder_loss
+                    )
                     time=epoch*total_batches + (i+1)*batch_size
-                    writer.add_scalar('total loss', losses[0], time)
-                    writer.add_scalar('spectro loss', losses[1], time)
-                    writer.add_scalar('wav loss', losses[2], time)
+                    writer.add_scalar('total_loss', total_loss, time)
+                    writer.add_scalar('spectro_loss', spectro_loss, time)
+                    writer.add_scalar('vocoder_loss', vocoder_loss, time)
                 if (i+1) % save_every_n == 0:
                     self.checkpoint += (i+1)
                     self.save()
@@ -161,9 +172,9 @@ class Trainer:
         print(
             f"epoch={epoch}",
             f"i={i}",
-            f"total loss={total_loss.detach().numpy():.5f}",
-            f"spectro loss={spectro_loss.detach().numpy():.5f}",
-            f"vocoder loss={vocoder_loss.detach().numpy():.5f}",
+            f"total loss={total_loss:.5f}",
+            f"spectro loss={spectro_loss:.5f}",
+            f"vocoder loss={vocoder_loss:.5f}",
         )
 
     @classmethod
