@@ -75,14 +75,17 @@ class Trainer:
 
     def train_step(self, entry):
         # ignore text
-        _, audios, spectrogram = entry
-        y_pred_spectros = self.model(spectrogram)
+        _, audios, spectros = entry
+        audios = audios.to(self.device)
+        spectros = spectros.to(self.device)
+        y_pred_spectros = self.model(spectros)
 
         # fix model returning 128 instead of 129 time steps in the spectrogram
         extra_timestep = y_pred_spectros[:,:,-1].unsqueeze(2)
         y_pred_spectros = torch.cat((y_pred_spectros, extra_timestep), dim=2)
 
-        spectro_loss = self.spectro_loss_func(y_pred_spectros, spectrogram)
+        y_pred_spectros_temp = y_pred_spectros # store for later return for debug
+        spectro_loss = self.spectro_loss_func(spectros, y_pred_spectros)
         
         # mels = y_pred_spectros.transpose(0,1)
         y_pred_spectros = torch.cat((y_pred_spectros, extra_timestep), dim=2)
@@ -94,7 +97,8 @@ class Trainer:
         y_pred_wavs = self.vocoder( x, mels )
         y_pred_wavs = y_pred_wavs.amax(dim=-1) # collapse 512 channel wav into 1 channel
 
-        vocoder_loss = self.vocoder_loss_func(y_pred_wavs, audios)
+        # this 0.001 ratio is not mentioned in the paper
+        vocoder_loss = 0.001 * self.vocoder_loss_func(audios, y_pred_wavs)
 
         total_loss = spectro_loss + vocoder_loss
 
@@ -109,7 +113,7 @@ class Trainer:
         ## not sure if this works
         # del y_pred_spectro
 
-        return total_loss, spectro_loss, vocoder_loss
+        return total_loss, spectro_loss, vocoder_loss, y_pred_spectros_temp, y_pred_wavs
 
 
     def train(
@@ -126,9 +130,9 @@ class Trainer:
         
         for epoch in range(epochs):
             for i, entry in enumerate(dataset):
-                losses = self.train_step(entry)
+                losses = self.train_step(entry)[:3] # ignore predicted values
                 if (i+1) % log_every_n == 0:
-                    Trainer.show_loss(*((epoch, i) + losses))
+                    Trainer.show_loss(epoch, i, *losses)
                 if (i+1) % save_every_n == 0:
                     self.checkpoint += (i+1)
                     print(f"Saving checkpoint {self.checkpoint}")
