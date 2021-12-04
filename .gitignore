@@ -3,3 +3,5 @@ venv/
 ForwardTacotron/
 VCTK-Corpus*/
 VCTK-Corpus*.*
+out/
+wave_step575k.pt
