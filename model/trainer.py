@@ -160,15 +160,16 @@ class Trainer:
         print(f"Beginning training {epochs} epochs, logging every {log_every_n}, saving every {save_every_n}, batch size {batch_size}.")
         
         import math
-        total_batches = math.ceil(len(dataset)/batch_size)
 
         import torch.utils.tensorboard
         writer = torch.utils.tensorboard.SummaryWriter(run_name)
 
         cpu = torch.device("cpu")
 
+        total_clips = 0
         for epoch in range(epochs):
             for i, entry in enumerate(dataset.batched(batch_size)):
+                if epoch == 0: total_clips += batch_size
                 self.checkpoint += 1
                 total_loss, spectro_loss, vocoder_loss, _ = self.train_step(entry)
                 total_loss = total_loss.detach().to(cpu).numpy()
@@ -177,12 +178,12 @@ class Trainer:
                 if (i+1) % log_every_n == 0:
                     Trainer.show_loss(
                         epoch,
-                        f"{i}/{total_batches}",
+                        f"{i}/{math.ceil(total_clips/batch_size)}",
                         total_loss,
                         spectro_loss,
                         vocoder_loss
                     )
-                    time=epoch*total_batches + (i+1)*batch_size
+                    time=epoch*total_clips + (i+1)*batch_size
                     writer.add_scalar('total_loss', total_loss, time)
                     writer.add_scalar('spectro_loss', spectro_loss, time)
                     writer.add_scalar('vocoder_loss', vocoder_loss, time)
