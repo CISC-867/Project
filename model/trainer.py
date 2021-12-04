@@ -37,7 +37,6 @@ class Trainer:
 
         total_loss = spectro_loss + vocoder_loss
 
-        print(total_loss, spectro_loss, vocoder_loss)
 
         self.model_optimizer.zero_grad()
         self.vocoder_optimizer.zero_grad()
@@ -49,7 +48,7 @@ class Trainer:
         ## not sure if this works
         # del y_pred_spectro
 
-        return total_loss
+        return total_loss, spectro_loss, vocoder_loss
 
 
     def train(self, model, dataset, device):
