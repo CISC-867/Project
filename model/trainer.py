@@ -189,6 +189,8 @@ class Trainer:
                     writer.add_scalar('vocoder_loss', vocoder_loss, time)
                 if (i+1) % save_every_n == 0:
                     self.save()
+        self.checkpoint+=1
+        self.save()
     
     def save(self):
         try: # ignore pipe errors when ctrl+c used
@@ -204,10 +206,10 @@ class Trainer:
             
 
     @classmethod
-    def show_loss(self, epoch, i, total_loss, spectro_loss, vocoder_loss):
+    def show_loss(self, epoch, batch, total_loss, spectro_loss, vocoder_loss):
         print(
             f"epoch={epoch}",
-            f"i={i}",
+            f"batch={batch}",
             f"total_loss={total_loss:.5f}",
             f"spectro_loss={spectro_loss:.5f}",
             f"vocoder_loss={vocoder_loss:.5f}",
