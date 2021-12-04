@@ -489,12 +489,12 @@ class Generator(nn.Module):
         if not self.multigpu:
             y_pred_wav = self.vocoder(
                 prev,
-                self.vocoder.pad_tensor(mel_outputs_postnet, hparams.voc_pad).transpose(1, 2)
+                self.vocoder.pad_tensor(y_pred_spectro, hparams.voc_pad).transpose(1, 2)
             )
         else:
             y_pred_wav = self.vocoder(
                 prev,
-                self.vocoder.module.pad_tensor(mel_outputs_postnet, hparams.voc_pad).transpose(1, 2)
+                self.vocoder.module.pad_tensor(y_pred_spectro, hparams.voc_pad).transpose(1, 2)
             )
 
         y_pred_wav = y_pred_wav.transpose(1, 2).unsqueeze(-1)
