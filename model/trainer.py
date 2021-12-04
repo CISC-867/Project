@@ -15,15 +15,21 @@ class Trainer:
         self.vocoder_loss_func = F.cross_entropy
 
     def train_step(self, x, y):
-        y_pred_spectro = self.model(x)
-        y_pred_spectro = y_pred_spectro.transpose(2,1)
-        spectro_loss = self.spectro_loss_func(y_pred_spectro, x)
-        
+        y_pred_spectros = self.model(x)
+        y_pred_spectros = y_pred_spectros.transpose(2,1)
+
         # for some reason our dataset returns 129 instead of 128 time slices
         # lets just chop the last one off for now.
         x = x[:,:,:128]
+
+        spectro_loss = self.spectro_loss_func(y_pred_spectros, x)
         
-        y_pred_wav = self.vocoder(y_pred_spectro, None)
+        mels = y_pred_spectros
+        print(mels.shape)
+        y_pred_wav = self.vocoder(
+            y_pred_spectros[0],
+            mels
+        )
         vocoder_loss = self.vocoder_loss_func(y_pred_wav)
 
         total_loss = spectro_loss + vocoder_loss
