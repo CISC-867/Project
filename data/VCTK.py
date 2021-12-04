@@ -95,7 +95,6 @@ class VCTKDataset(torch.utils.data.Dataset):
         spectro_batch = []
         for i, entry in enumerate(self):
             text,clips,spectros = entry
-            print(text, clips.shape, spectros.shape, len(clips))
             text_batch += [text] * len(clips) # ensure we know which transcript belongs to which wav/spectro
             clip_batch += clips
             spectro_batch += spectros
