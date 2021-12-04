@@ -13,3 +13,6 @@ https://www.kaggle.com/andradaolteanu/pytorch-rnns-and-lstms-explained-acc-0-99
 
 wavenet
 https://arxiv.org/abs/1609.03499
+
+
+https://github.com/SamuelBroughton/Mel-Cepstral-Distortion/blob/master/mel-cepstral-distortion.ipynb

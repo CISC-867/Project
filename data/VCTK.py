@@ -95,6 +95,18 @@ class VCTKDataset(torch.utils.data.Dataset):
             plt.colorbar(img, ax=ax, format="%+2.0f dB")
     
     @classmethod
+    def stitch_audio(self, audios):
+        return audios.view(1,-1)[0]
+    
+    @classmethod
+    def stitch_spectros(self, spectros):
+        return spectros \
+            .transpose(2,1) \
+            .reshape(-1, 80) \
+            .transpose(1,0)
+
+
+    @classmethod
     def show_audios(self, audios):
         # make sure to call %matplotlib inline
         import matplotlib.pyplot as plt
