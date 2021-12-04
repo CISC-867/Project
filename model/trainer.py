@@ -14,23 +14,26 @@ class Trainer:
         self.spectro_loss_func = nn.L1Loss()
         self.vocoder_loss_func = F.cross_entropy
 
-    def train_step(self, x, y):
-        y_pred_spectros = self.model(x)
-        y_pred_spectros = y_pred_spectros.transpose(2,1)
+    def train_step(self, audios, spectrogram):
+        y_pred_spectros = self.model(spectrogram)
 
-        # for some reason our dataset returns 129 instead of 128 time slices
-        # lets just chop the last one off for now.
-        x = x[:,:,:128]
+        # fix model returning 128 instead of 129 time steps in the spectrogram
+        extra_timestep = y_pred_spectros[:,:,-1].unsqueeze(2)
+        y_pred_spectros = torch.cat((y_pred_spectros, extra_timestep), dim=2)
 
-        spectro_loss = self.spectro_loss_func(y_pred_spectros, x)
+        spectro_loss = self.spectro_loss_func(y_pred_spectros, spectrogram)
         
+        # mels = y_pred_spectros.transpose(0,1)
+        y_pred_spectros = torch.cat((y_pred_spectros, extra_timestep), dim=2)
+        y_pred_spectros = torch.cat((y_pred_spectros, extra_timestep), dim=2)
+        y_pred_spectros = torch.cat((y_pred_spectros, extra_timestep), dim=2)
+        
+        x = audios
         mels = y_pred_spectros
-        print(mels.shape)
-        y_pred_wav = self.vocoder(
-            y_pred_spectros[0],
-            mels
-        )
-        vocoder_loss = self.vocoder_loss_func(y_pred_wav)
+        y_pred_wavs = self.vocoder( x, mels )
+        y_pred_wavs = y_pred_wavs.amax(dim=-1) # collapse 512 channel wav into 1 channel
+
+        vocoder_loss = self.vocoder_loss_func(y_pred_wavs, audios)
 
         total_loss = spectro_loss + vocoder_loss
 

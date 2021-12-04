@@ -71,4 +71,8 @@ class SpectrogramModel(nn.Module):
         x = x.transpose(2,1)
         x, _ = self.lstm3(x)
         x = self.dense(x)
+        x = x.transpose(2,1)
         return x
+
+    def get_param_count(self):
+        return sum([len(x) for x in list(self.parameters())])
