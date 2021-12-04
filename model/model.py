@@ -2,11 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-import sys
-import os.path
-
-sys.path.append(os.path.abspath("ForwardTacotron"))
-from models.fatchord_version import WaveRNN
 
 
 class SpectrogramModel(nn.Module):
@@ -77,30 +72,3 @@ class SpectrogramModel(nn.Module):
         x, _ = self.lstm3(x)
         x = self.dense(x)
         return x
-
-class FullModel(nn.Module):
-    def __init__(self) -> None:
-        super(FullModel, self).__init__()
-        self.spectro = SpectrogramModel()
-
-        self.vocoder = WaveRNN(
-            rnn_dims=512,
-            fc_dims=512,
-            bits=9, # OrigAuthor: bit depth of signal
-            pad=2, # OrigAuthor: this will pad the input so that the resnet can 'see' wider than input length
-            upsample_factors=(5, 5, 8), # OrigAuthor: NB - this needs to correctly factorise hop_length
-            feat_dims=80,
-            compute_dims=128,
-            res_out_dims=128,
-            res_blocks=10,
-            hop_length=200,
-            sample_rate=16000,
-            mode="RAW", # OrigAuthor: either 'RAW' (softmax on raw bits) or 'MOL' (sample from mixture of logistics)
-        )
-
-    def forward(self, clips, spectros):
-        spectros = self.spectro(spectros)
-        spectros = spectros.transpose(2,1)
-        print(clips.shape, spectros.shape)
-        y_pred = self.vocoder(clips, spectros)
-        return y_pred

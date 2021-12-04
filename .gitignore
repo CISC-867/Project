@@ -4,4 +4,5 @@ ForwardTacotron/
 VCTK-Corpus*/
 VCTK-Corpus*.*
 out/
+checkpoints/
 wave_step575k.pt
