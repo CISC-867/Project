@@ -1,0 +1,1 @@
+python3 -u afktrain.py | tee -a train.log

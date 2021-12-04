@@ -83,10 +83,14 @@ class VCTKDataset(torch.utils.data.Dataset):
             )
             plt.colorbar(img, ax=ax, format="%+2.0f dB")
     
+    @classmethod
     def show_audios(self, audios):
+        # make sure to call %matplotlib inline
         import matplotlib.pyplot as plt
         for v in audios:
             fix, ax = plt.subplots()
+            # plt.sca(ax)
+            # plt.yticks(np.arange(-1.2, 1.2, 0.2))
             img = librosa.display.waveplot(v.detach().numpy(), sr=16000)
 
     def batched(self, batch_size):

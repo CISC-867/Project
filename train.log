@@ -1,0 +1,446 @@
+Using default model
+Using default vocoder
+Loading models from checkpoint 300001
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+Using default model
+Using default vocoder
+Loading models from checkpoint 300001
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+epoch=0 i=0/530 total_loss=3.76425 spectro_loss=0.97041 vocoder_loss=2.79384
+epoch=0 i=1/530 total_loss=17.36389 spectro_loss=1.68030 vocoder_loss=15.68359
+epoch=0 i=2/530 total_loss=8.74060 spectro_loss=1.03579 vocoder_loss=7.70481
+epoch=0 i=3/530 total_loss=17.81579 spectro_loss=0.56045 vocoder_loss=17.25534
+epoch=0 i=4/530 total_loss=12.60939 spectro_loss=0.86253 vocoder_loss=11.74686
+epoch=0 i=5/530 total_loss=11.71045 spectro_loss=0.70953 vocoder_loss=11.00091
+epoch=0 i=6/530 total_loss=42.04610 spectro_loss=0.86721 vocoder_loss=41.17889
+epoch=0 i=7/530 total_loss=16.71885 spectro_loss=0.77856 vocoder_loss=15.94029
+epoch=0 i=8/530 total_loss=9.90825 spectro_loss=1.05648 vocoder_loss=8.85177
+epoch=0 i=9/530 total_loss=14.73172 spectro_loss=0.69833 vocoder_loss=14.03338
+epoch=0 i=10/530 total_loss=6.65179 spectro_loss=0.90014 vocoder_loss=5.75164
+epoch=0 i=11/530 total_loss=6.60173 spectro_loss=0.74533 vocoder_loss=5.85640
+epoch=0 i=12/530 total_loss=5.25235 spectro_loss=0.79992 vocoder_loss=4.45243
+epoch=0 i=13/530 total_loss=5.01254 spectro_loss=0.67216 vocoder_loss=4.34038
+epoch=0 i=14/530 total_loss=3.73133 spectro_loss=0.67177 vocoder_loss=3.05956
+epoch=0 i=15/530 total_loss=3.86274 spectro_loss=0.76885 vocoder_loss=3.09390
+epoch=0 i=16/530 total_loss=4.71502 spectro_loss=0.91584 vocoder_loss=3.79918
+epoch=0 i=17/530 total_loss=4.84008 spectro_loss=0.92933 vocoder_loss=3.91076
+epoch=0 i=18/530 total_loss=5.86943 spectro_loss=0.78930 vocoder_loss=5.08013
+epoch=0 i=19/530 total_loss=4.51466 spectro_loss=0.87294 vocoder_loss=3.64172
+epoch=0 i=20/530 total_loss=5.36146 spectro_loss=0.80185 vocoder_loss=4.55961
+epoch=0 i=21/530 total_loss=4.44824 spectro_loss=0.73598 vocoder_loss=3.71227
+epoch=0 i=22/530 total_loss=4.88294 spectro_loss=0.89564 vocoder_loss=3.98730
+epoch=0 i=23/530 total_loss=4.48648 spectro_loss=0.84961 vocoder_loss=3.63688
+epoch=0 i=24/530 total_loss=4.67435 spectro_loss=0.87069 vocoder_loss=3.80367
+epoch=0 i=25/530 total_loss=7.00344 spectro_loss=1.14739 vocoder_loss=5.85605
+epoch=0 i=26/530 total_loss=3.12107 spectro_loss=0.62081 vocoder_loss=2.50026
+epoch=0 i=27/530 total_loss=3.04948 spectro_loss=0.47180 vocoder_loss=2.57768
+epoch=0 i=28/530 total_loss=2.98160 spectro_loss=0.49240 vocoder_loss=2.48920
+epoch=0 i=29/530 total_loss=2.25981 spectro_loss=0.38110 vocoder_loss=1.87871
+epoch=0 i=30/530 total_loss=4.61677 spectro_loss=0.76499 vocoder_loss=3.85179
+epoch=0 i=31/530 total_loss=3.24269 spectro_loss=0.45202 vocoder_loss=2.79068
+epoch=0 i=32/530 total_loss=3.13343 spectro_loss=0.41161 vocoder_loss=2.72182
+epoch=0 i=33/530 total_loss=3.91557 spectro_loss=0.49043 vocoder_loss=3.42513
+epoch=0 i=34/530 total_loss=3.25608 spectro_loss=0.41671 vocoder_loss=2.83937
+epoch=0 i=35/530 total_loss=2.53362 spectro_loss=0.32111 vocoder_loss=2.21251
+epoch=0 i=36/530 total_loss=2.34352 spectro_loss=0.33168 vocoder_loss=2.01184
+epoch=0 i=37/530 total_loss=2.53431 spectro_loss=0.40052 vocoder_loss=2.13379
+epoch=0 i=38/530 total_loss=3.28900 spectro_loss=0.40734 vocoder_loss=2.88167
+epoch=0 i=39/530 total_loss=1.85774 spectro_loss=0.20721 vocoder_loss=1.65054
+epoch=0 i=40/530 total_loss=2.07385 spectro_loss=0.27427 vocoder_loss=1.79958
+epoch=0 i=41/530 total_loss=2.55373 spectro_loss=0.31979 vocoder_loss=2.23394
+epoch=0 i=42/530 total_loss=2.81727 spectro_loss=0.35800 vocoder_loss=2.45927
+epoch=0 i=43/530 total_loss=3.64221 spectro_loss=0.45492 vocoder_loss=3.18730
+epoch=0 i=44/530 total_loss=1.70574 spectro_loss=0.21515 vocoder_loss=1.49059
+epoch=0 i=45/530 total_loss=5.25663 spectro_loss=0.86675 vocoder_loss=4.38989
+epoch=0 i=46/530 total_loss=3.12178 spectro_loss=0.32006 vocoder_loss=2.80172
+epoch=0 i=47/530 total_loss=2.39735 spectro_loss=0.27010 vocoder_loss=2.12725
+epoch=0 i=48/530 total_loss=1.46505 spectro_loss=0.17059 vocoder_loss=1.29447
+epoch=0 i=49/530 total_loss=3.89845 spectro_loss=0.42771 vocoder_loss=3.47074
+Saving checkpoint 300051
+Saved
+epoch=0 i=50/530 total_loss=2.36175 spectro_loss=0.24279 vocoder_loss=2.11896
+Using default model
+Using default vocoder
+Loading models from checkpoint 300001
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+epoch=0 i=0/530 total_loss=3.62104 spectro_loss=0.94260 vocoder_loss=2.67845
+Using default model
+Using default vocoder
+Loading models from checkpoint 300001
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+Saving checkpoint 300002failure
+Saved
+CUDA out of memory. Tried to allocate 1.17 GiB (GPU 0; 11.17 GiB total capacity; 3.15 GiB already allocated; 75.44 MiB free; 3.20 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Using default model
+Using default vocoder
+Loading models from checkpoint 300051
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+Saving checkpoint 300056failure
+Saved
+CUDA out of memory. Tried to allocate 1.17 GiB (GPU 0; 11.17 GiB total capacity; 3.15 GiB already allocated; 75.44 MiB free; 3.20 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Using default model
+Using default vocoder
+Loading models from checkpoint 300051
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+Saving checkpoint 300056failure
+Using default model
+Using default vocoder
+Loading models from checkpoint 300051
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50, batch size 4.
+epoch=0 i=0/530 total_loss=3.16261 spectro_loss=0.32889 vocoder_loss=2.83372
+epoch=0 i=1/530 total_loss=8.81567 spectro_loss=0.62323 vocoder_loss=8.19244
+epoch=0 i=2/530 total_loss=7.40716 spectro_loss=0.56287 vocoder_loss=6.84429
+epoch=0 i=3/530 total_loss=5.96877 spectro_loss=0.81153 vocoder_loss=5.15724
+epoch=0 i=4/530 total_loss=2.94449 spectro_loss=0.47709 vocoder_loss=2.46740
+epoch=0 i=5/530 total_loss=3.76910 spectro_loss=0.43562 vocoder_loss=3.33348
+epoch=0 i=6/530 total_loss=3.11706 spectro_loss=0.42497 vocoder_loss=2.69209
+epoch=0 i=7/530 total_loss=1.99295 spectro_loss=0.31404 vocoder_loss=1.67891
+epoch=0 i=8/530 total_loss=3.19816 spectro_loss=0.49957 vocoder_loss=2.69858
+epoch=0 i=9/530 total_loss=3.64568 spectro_loss=0.55355 vocoder_loss=3.09213
+epoch=0 i=10/530 total_loss=3.34737 spectro_loss=0.42838 vocoder_loss=2.91899
+epoch=0 i=11/530 total_loss=2.10460 spectro_loss=0.31623 vocoder_loss=1.78837
+epoch=0 i=12/530 total_loss=2.73031 spectro_loss=0.37806 vocoder_loss=2.35225
+epoch=0 i=13/530 total_loss=3.62423 spectro_loss=0.53022 vocoder_loss=3.09401
+epoch=0 i=14/530 total_loss=3.67839 spectro_loss=0.41374 vocoder_loss=3.26465
+epoch=0 i=15/530 total_loss=3.11937 spectro_loss=0.41983 vocoder_loss=2.69954
+epoch=0 i=16/530 total_loss=3.57092 spectro_loss=0.56704 vocoder_loss=3.00388
+epoch=0 i=17/530 total_loss=3.90549 spectro_loss=0.49298 vocoder_loss=3.41251
+epoch=0 i=18/530 total_loss=1.58324 spectro_loss=0.20105 vocoder_loss=1.38219
+epoch=0 i=19/530 total_loss=4.23814 spectro_loss=0.47272 vocoder_loss=3.76542
+epoch=0 i=20/530 total_loss=3.47708 spectro_loss=0.43058 vocoder_loss=3.04650
+epoch=0 i=21/530 total_loss=2.35181 spectro_loss=0.23991 vocoder_loss=2.11190
+epoch=0 i=22/530 total_loss=3.71649 spectro_loss=0.48144 vocoder_loss=3.23505
+epoch=0 i=23/530 total_loss=2.16515 spectro_loss=0.28467 vocoder_loss=1.88047
+epoch=0 i=24/530 total_loss=2.65807 spectro_loss=0.38024 vocoder_loss=2.27783
+epoch=0 i=25/530 total_loss=3.24252 spectro_loss=0.40239 vocoder_loss=2.84013
+epoch=0 i=26/530 total_loss=1.49055 spectro_loss=0.19154 vocoder_loss=1.29901
+epoch=0 i=27/530 total_loss=2.12519 spectro_loss=0.26904 vocoder_loss=1.85615
+epoch=0 i=28/530 total_loss=1.58619 spectro_loss=0.20477 vocoder_loss=1.38142
+epoch=0 i=29/530 total_loss=4.14550 spectro_loss=0.60821 vocoder_loss=3.53730
+epoch=0 i=30/530 total_loss=4.60457 spectro_loss=0.49116 vocoder_loss=4.11341
+epoch=0 i=31/530 total_loss=1.48946 spectro_loss=0.15698 vocoder_loss=1.33247
+epoch=0 i=32/530 total_loss=2.56165 spectro_loss=0.35853 vocoder_loss=2.20311
+epoch=0 i=33/530 total_loss=3.08693 spectro_loss=0.37983 vocoder_loss=2.70710
+epoch=0 i=34/530 total_loss=2.88235 spectro_loss=0.32194 vocoder_loss=2.56040
+epoch=0 i=35/530 total_loss=3.52307 spectro_loss=0.45219 vocoder_loss=3.07089
+epoch=0 i=36/530 total_loss=2.13662 spectro_loss=0.26013 vocoder_loss=1.87649
+epoch=0 i=37/530 total_loss=3.19202 spectro_loss=0.38268 vocoder_loss=2.80935
+epoch=0 i=38/530 total_loss=2.75869 spectro_loss=0.27153 vocoder_loss=2.48716
+epoch=0 i=39/530 total_loss=3.13531 spectro_loss=0.38360 vocoder_loss=2.75171
+epoch=0 i=40/530 total_loss=2.01352 spectro_loss=0.16654 vocoder_loss=1.84698
+epoch=0 i=41/530 total_loss=2.77992 spectro_loss=0.36253 vocoder_loss=2.41739
+epoch=0 i=42/530 total_loss=1.41973 spectro_loss=0.19671 vocoder_loss=1.22301
+epoch=0 i=43/530 total_loss=2.52226 spectro_loss=0.27988 vocoder_loss=2.24238
+epoch=0 i=44/530 total_loss=2.79837 spectro_loss=0.34148 vocoder_loss=2.45688
+epoch=0 i=45/530 total_loss=2.81618 spectro_loss=0.31906 vocoder_loss=2.49712
+epoch=0 i=46/530 total_loss=2.47533 spectro_loss=0.29335 vocoder_loss=2.18198
+epoch=0 i=47/530 total_loss=4.06801 spectro_loss=0.58680 vocoder_loss=3.48121
+epoch=0 i=48/530 total_loss=3.80289 spectro_loss=0.60261 vocoder_loss=3.20029
+epoch=0 i=49/530 total_loss=1.72989 spectro_loss=0.20032 vocoder_loss=1.52958
+Saving checkpoint 300105
+Saved
+epoch=0 i=50/530 total_loss=3.38973 spectro_loss=0.47953 vocoder_loss=2.91020
+epoch=0 i=51/530 total_loss=1.69638 spectro_loss=0.17276 vocoder_loss=1.52362
+epoch=0 i=52/530 total_loss=2.21702 spectro_loss=0.24749 vocoder_loss=1.96953
+epoch=0 i=53/530 total_loss=1.91099 spectro_loss=0.18794 vocoder_loss=1.72306
+epoch=0 i=54/530 total_loss=1.84307 spectro_loss=0.28872 vocoder_loss=1.55436
+epoch=0 i=55/530 total_loss=1.37066 spectro_loss=0.13315 vocoder_loss=1.23751
+epoch=0 i=56/530 total_loss=2.11585 spectro_loss=0.21037 vocoder_loss=1.90548
+epoch=0 i=57/530 total_loss=2.19634 spectro_loss=0.23336 vocoder_loss=1.96298
+epoch=0 i=58/530 total_loss=2.75170 spectro_loss=0.27026 vocoder_loss=2.48143
+epoch=0 i=59/530 total_loss=1.73059 spectro_loss=0.16114 vocoder_loss=1.56945
+epoch=0 i=60/530 total_loss=2.13090 spectro_loss=0.19149 vocoder_loss=1.93941
+epoch=0 i=61/530 total_loss=3.12228 spectro_loss=0.37235 vocoder_loss=2.74994
+epoch=0 i=62/530 total_loss=2.65943 spectro_loss=0.32837 vocoder_loss=2.33106
+epoch=0 i=63/530 total_loss=1.83050 spectro_loss=0.17797 vocoder_loss=1.65254
+epoch=0 i=64/530 total_loss=2.90078 spectro_loss=0.31789 vocoder_loss=2.58289
+epoch=0 i=65/530 total_loss=2.58301 spectro_loss=0.30943 vocoder_loss=2.27358
+epoch=0 i=66/530 total_loss=2.95488 spectro_loss=0.36816 vocoder_loss=2.58672
+epoch=0 i=67/530 total_loss=1.19871 spectro_loss=0.14761 vocoder_loss=1.05110
+epoch=0 i=68/530 total_loss=4.27551 spectro_loss=0.63469 vocoder_loss=3.64082
+epoch=0 i=69/530 total_loss=1.78652 spectro_loss=0.20000 vocoder_loss=1.58652
+epoch=0 i=70/530 total_loss=2.40028 spectro_loss=0.22267 vocoder_loss=2.17761
+epoch=0 i=71/530 total_loss=1.86722 spectro_loss=0.27894 vocoder_loss=1.58828
+epoch=0 i=72/530 total_loss=3.09500 spectro_loss=0.39303 vocoder_loss=2.70197
+epoch=0 i=73/530 total_loss=2.48884 spectro_loss=0.27453 vocoder_loss=2.21431
+epoch=0 i=74/530 total_loss=1.87830 spectro_loss=0.26402 vocoder_loss=1.61428
+epoch=0 i=75/530 total_loss=4.03072 spectro_loss=0.56600 vocoder_loss=3.46471
+epoch=0 i=76/530 total_loss=2.51786 spectro_loss=0.30796 vocoder_loss=2.20991
+epoch=0 i=77/530 total_loss=1.86053 spectro_loss=0.22293 vocoder_loss=1.63761
+epoch=0 i=78/530 total_loss=1.69864 spectro_loss=0.26425 vocoder_loss=1.43439
+epoch=0 i=79/530 total_loss=2.37850 spectro_loss=0.26623 vocoder_loss=2.11227
+epoch=0 i=80/530 total_loss=1.21507 spectro_loss=0.11919 vocoder_loss=1.09588
+epoch=0 i=81/530 total_loss=1.81244 spectro_loss=0.17605 vocoder_loss=1.63638
+epoch=0 i=82/530 total_loss=2.33157 spectro_loss=0.32242 vocoder_loss=2.00916
+epoch=0 i=83/530 total_loss=2.27672 spectro_loss=0.21715 vocoder_loss=2.05957
+epoch=0 i=84/530 total_loss=2.84608 spectro_loss=0.32084 vocoder_loss=2.52525
+epoch=0 i=85/530 total_loss=2.78371 spectro_loss=0.31275 vocoder_loss=2.47097
+epoch=0 i=86/530 total_loss=2.53063 spectro_loss=0.33654 vocoder_loss=2.19409
+epoch=0 i=87/530 total_loss=1.41814 spectro_loss=0.14868 vocoder_loss=1.26946
+epoch=0 i=88/530 total_loss=1.40155 spectro_loss=0.13708 vocoder_loss=1.26448
+epoch=0 i=89/530 total_loss=2.38129 spectro_loss=0.37462 vocoder_loss=2.00667
+epoch=0 i=90/530 total_loss=3.91855 spectro_loss=0.55617 vocoder_loss=3.36238
+epoch=0 i=91/530 total_loss=2.60455 spectro_loss=0.29003 vocoder_loss=2.31452
+epoch=0 i=92/530 total_loss=1.69856 spectro_loss=0.22529 vocoder_loss=1.47327
+epoch=0 i=93/530 total_loss=1.67734 spectro_loss=0.17382 vocoder_loss=1.50352
+epoch=0 i=94/530 total_loss=1.94488 spectro_loss=0.19008 vocoder_loss=1.75480
+epoch=0 i=95/530 total_loss=1.49385 spectro_loss=0.16515 vocoder_loss=1.32870
+epoch=0 i=96/530 total_loss=2.14510 spectro_loss=0.26862 vocoder_loss=1.87648
+epoch=0 i=97/530 total_loss=6.12112 spectro_loss=0.88989 vocoder_loss=5.23123
+epoch=0 i=98/530 total_loss=3.79082 spectro_loss=0.49774 vocoder_loss=3.29308
+epoch=0 i=99/530 total_loss=2.62819 spectro_loss=0.34872 vocoder_loss=2.27947
+Saving checkpoint 300155
+Saved
+epoch=0 i=100/530 total_loss=3.09842 spectro_loss=0.37358 vocoder_loss=2.72483
+epoch=0 i=101/530 total_loss=2.39572 spectro_loss=0.32891 vocoder_loss=2.06681
+epoch=0 i=102/530 total_loss=1.56722 spectro_loss=0.18018 vocoder_loss=1.38704
+epoch=0 i=103/530 total_loss=2.53793 spectro_loss=0.27607 vocoder_loss=2.26186
+epoch=0 i=104/530 total_loss=3.89208 spectro_loss=0.51196 vocoder_loss=3.38012
+epoch=0 i=105/530 total_loss=3.81739 spectro_loss=0.48815 vocoder_loss=3.32924
+epoch=0 i=106/530 total_loss=1.70712 spectro_loss=0.20749 vocoder_loss=1.49962
+epoch=0 i=107/530 total_loss=2.49435 spectro_loss=0.27733 vocoder_loss=2.21702
+epoch=0 i=108/530 total_loss=1.83244 spectro_loss=0.25858 vocoder_loss=1.57385
+epoch=0 i=109/530 total_loss=3.17723 spectro_loss=0.36014 vocoder_loss=2.81709
+epoch=0 i=110/530 total_loss=1.86539 spectro_loss=0.22225 vocoder_loss=1.64314
+epoch=0 i=111/530 total_loss=4.84094 spectro_loss=0.57971 vocoder_loss=4.26123
+epoch=0 i=112/530 total_loss=1.42414 spectro_loss=0.13772 vocoder_loss=1.28642
+epoch=0 i=113/530 total_loss=2.37855 spectro_loss=0.23412 vocoder_loss=2.14442
+epoch=0 i=114/530 total_loss=1.11261 spectro_loss=0.15882 vocoder_loss=0.95380
+epoch=0 i=115/530 total_loss=2.32018 spectro_loss=0.23879 vocoder_loss=2.08139
+epoch=0 i=116/530 total_loss=2.28578 spectro_loss=0.24693 vocoder_loss=2.03885
+epoch=0 i=117/530 total_loss=2.99948 spectro_loss=0.38265 vocoder_loss=2.61684
+epoch=0 i=118/530 total_loss=1.58434 spectro_loss=0.15033 vocoder_loss=1.43401
+epoch=0 i=119/530 total_loss=1.15570 spectro_loss=0.11233 vocoder_loss=1.04336
+epoch=0 i=120/530 total_loss=2.39457 spectro_loss=0.24503 vocoder_loss=2.14954
+epoch=0 i=121/530 total_loss=1.52796 spectro_loss=0.13161 vocoder_loss=1.39635
+epoch=0 i=122/530 total_loss=2.52132 spectro_loss=0.34007 vocoder_loss=2.18125
+epoch=0 i=123/530 total_loss=2.41580 spectro_loss=0.28028 vocoder_loss=2.13553
+epoch=0 i=124/530 total_loss=3.70692 spectro_loss=0.46348 vocoder_loss=3.24344
+epoch=0 i=125/530 total_loss=3.93541 spectro_loss=0.49066 vocoder_loss=3.44475
+epoch=0 i=126/530 total_loss=3.42536 spectro_loss=0.43814 vocoder_loss=2.98722
+epoch=0 i=127/530 total_loss=2.08120 spectro_loss=0.22061 vocoder_loss=1.86059
+epoch=0 i=128/530 total_loss=2.74090 spectro_loss=0.33503 vocoder_loss=2.40586
+epoch=0 i=129/530 total_loss=1.91747 spectro_loss=0.22734 vocoder_loss=1.69012
+epoch=0 i=130/530 total_loss=2.00353 spectro_loss=0.23370 vocoder_loss=1.76983
+epoch=0 i=131/530 total_loss=3.84095 spectro_loss=0.53642 vocoder_loss=3.30452
+epoch=0 i=132/530 total_loss=2.85942 spectro_loss=0.35090 vocoder_loss=2.50852
+epoch=0 i=133/530 total_loss=1.58877 spectro_loss=0.24686 vocoder_loss=1.34191
+epoch=0 i=134/530 total_loss=3.20395 spectro_loss=0.41248 vocoder_loss=2.79146
+epoch=0 i=135/530 total_loss=2.26315 spectro_loss=0.35203 vocoder_loss=1.91111
+epoch=0 i=136/530 total_loss=2.23797 spectro_loss=0.21776 vocoder_loss=2.02021
+epoch=0 i=137/530 total_loss=1.59251 spectro_loss=0.14442 vocoder_loss=1.44809
+epoch=0 i=138/530 total_loss=2.74147 spectro_loss=0.40734 vocoder_loss=2.33413
+epoch=0 i=139/530 total_loss=2.54071 spectro_loss=0.30908 vocoder_loss=2.23163
+epoch=0 i=140/530 total_loss=1.99705 spectro_loss=0.21135 vocoder_loss=1.78570
+epoch=0 i=141/530 total_loss=1.40351 spectro_loss=0.18457 vocoder_loss=1.21894
+epoch=0 i=142/530 total_loss=3.02346 spectro_loss=0.40370 vocoder_loss=2.61976
+epoch=0 i=143/530 total_loss=4.56308 spectro_loss=0.24715 vocoder_loss=4.31594
+epoch=0 i=144/530 total_loss=4.14782 spectro_loss=0.47827 vocoder_loss=3.66956
+epoch=0 i=145/530 total_loss=3.51067 spectro_loss=0.37003 vocoder_loss=3.14064
+epoch=0 i=146/530 total_loss=2.59168 spectro_loss=0.54407 vocoder_loss=2.04761
+epoch=0 i=147/530 total_loss=7.18576 spectro_loss=0.43781 vocoder_loss=6.74795
+epoch=0 i=148/530 total_loss=4.25644 spectro_loss=0.68571 vocoder_loss=3.57073
+epoch=0 i=149/530 total_loss=2.03100 spectro_loss=0.35078 vocoder_loss=1.68022
+Saving checkpoint 300205
+Saved
+epoch=0 i=150/530 total_loss=2.90094 spectro_loss=0.50194 vocoder_loss=2.39900
+epoch=0 i=151/530 total_loss=2.52097 spectro_loss=0.41478 vocoder_loss=2.10619
+epoch=0 i=152/530 total_loss=3.08526 spectro_loss=0.39203 vocoder_loss=2.69323
+epoch=0 i=153/530 total_loss=1.92288 spectro_loss=0.35515 vocoder_loss=1.56773
+epoch=0 i=154/530 total_loss=3.36512 spectro_loss=0.52099 vocoder_loss=2.84413
+epoch=0 i=155/530 total_loss=4.24044 spectro_loss=0.63801 vocoder_loss=3.60244
+epoch=0 i=156/530 total_loss=2.33078 spectro_loss=0.38087 vocoder_loss=1.94991
+epoch=0 i=157/530 total_loss=2.14618 spectro_loss=0.29114 vocoder_loss=1.85504
+epoch=0 i=158/530 total_loss=2.31017 spectro_loss=0.26192 vocoder_loss=2.04825
+epoch=0 i=159/530 total_loss=3.61247 spectro_loss=0.49701 vocoder_loss=3.11546
+epoch=0 i=160/530 total_loss=1.25095 spectro_loss=0.16098 vocoder_loss=1.08996
+epoch=0 i=161/530 total_loss=2.08306 spectro_loss=0.21554 vocoder_loss=1.86752
+epoch=0 i=162/530 total_loss=1.55181 spectro_loss=0.16543 vocoder_loss=1.38639
+epoch=0 i=163/530 total_loss=2.37799 spectro_loss=0.35018 vocoder_loss=2.02780
+epoch=0 i=164/530 total_loss=1.84953 spectro_loss=0.22418 vocoder_loss=1.62535
+epoch=0 i=165/530 total_loss=3.54519 spectro_loss=0.50039 vocoder_loss=3.04480
+epoch=0 i=166/530 total_loss=1.24734 spectro_loss=0.13037 vocoder_loss=1.11696
+epoch=0 i=167/530 total_loss=2.79225 spectro_loss=0.30361 vocoder_loss=2.48864
+epoch=0 i=168/530 total_loss=4.40268 spectro_loss=0.64865 vocoder_loss=3.75403
+epoch=0 i=169/530 total_loss=3.12452 spectro_loss=0.44208 vocoder_loss=2.68244
+epoch=0 i=170/530 total_loss=2.62963 spectro_loss=0.29556 vocoder_loss=2.33407
+epoch=0 i=171/530 total_loss=2.45288 spectro_loss=0.31322 vocoder_loss=2.13966
+epoch=0 i=172/530 total_loss=2.38075 spectro_loss=0.26530 vocoder_loss=2.11545
+epoch=0 i=173/530 total_loss=2.68010 spectro_loss=0.30972 vocoder_loss=2.37038
+epoch=0 i=174/530 total_loss=1.52223 spectro_loss=0.19964 vocoder_loss=1.32259
+epoch=0 i=175/530 total_loss=2.99854 spectro_loss=0.26715 vocoder_loss=2.73139
+epoch=0 i=176/530 total_loss=3.49198 spectro_loss=0.34752 vocoder_loss=3.14446
+epoch=0 i=177/530 total_loss=2.41184 spectro_loss=0.19703 vocoder_loss=2.21481
+epoch=0 i=178/530 total_loss=3.04567 spectro_loss=0.37155 vocoder_loss=2.67412
+epoch=0 i=179/530 total_loss=2.11537 spectro_loss=0.24377 vocoder_loss=1.87160
+epoch=0 i=180/530 total_loss=2.65314 spectro_loss=0.27439 vocoder_loss=2.37876
+epoch=0 i=181/530 total_loss=2.26340 spectro_loss=0.22553 vocoder_loss=2.03787
+epoch=0 i=182/530 total_loss=2.73109 spectro_loss=0.25944 vocoder_loss=2.47165
+epoch=0 i=183/530 total_loss=1.92999 spectro_loss=0.22891 vocoder_loss=1.70108
+epoch=0 i=184/530 total_loss=3.45454 spectro_loss=0.60480 vocoder_loss=2.84974
+epoch=0 i=185/530 total_loss=2.59438 spectro_loss=0.22432 vocoder_loss=2.37006
+epoch=0 i=186/530 total_loss=1.97186 spectro_loss=0.25433 vocoder_loss=1.71753
+epoch=0 i=187/530 total_loss=2.35066 spectro_loss=0.26912 vocoder_loss=2.08154
+epoch=0 i=188/530 total_loss=1.58138 spectro_loss=0.16199 vocoder_loss=1.41939
+epoch=0 i=189/530 total_loss=3.01776 spectro_loss=0.42268 vocoder_loss=2.59507
+epoch=0 i=190/530 total_loss=5.33980 spectro_loss=0.69687 vocoder_loss=4.64294
+epoch=0 i=191/530 total_loss=2.70538 spectro_loss=0.32225 vocoder_loss=2.38313
+epoch=0 i=192/530 total_loss=2.44142 spectro_loss=0.31209 vocoder_loss=2.12933
+epoch=0 i=193/530 total_loss=3.66990 spectro_loss=0.47597 vocoder_loss=3.19393
+epoch=0 i=194/530 total_loss=2.65783 spectro_loss=0.31944 vocoder_loss=2.33840
+epoch=0 i=195/530 total_loss=2.85347 spectro_loss=0.31141 vocoder_loss=2.54206
+epoch=0 i=196/530 total_loss=1.89532 spectro_loss=0.21850 vocoder_loss=1.67681
+epoch=0 i=197/530 total_loss=3.36409 spectro_loss=0.41691 vocoder_loss=2.94718
+epoch=0 i=198/530 total_loss=3.18374 spectro_loss=0.32106 vocoder_loss=2.86268
+epoch=0 i=199/530 total_loss=4.19818 spectro_loss=0.43085 vocoder_loss=3.76733
+Saving checkpoint 300255
+Saved
+epoch=0 i=200/530 total_loss=2.08485 spectro_loss=0.20740 vocoder_loss=1.87745
+epoch=0 i=201/530 total_loss=1.88666 spectro_loss=0.25105 vocoder_loss=1.63560
+epoch=0 i=202/530 total_loss=3.11726 spectro_loss=0.35145 vocoder_loss=2.76580
+epoch=0 i=203/530 total_loss=6.05672 spectro_loss=1.10498 vocoder_loss=4.95174
+epoch=0 i=204/530 total_loss=3.16372 spectro_loss=0.41947 vocoder_loss=2.74425
+epoch=0 i=205/530 total_loss=2.01589 spectro_loss=0.20323 vocoder_loss=1.81266
+epoch=0 i=206/530 total_loss=1.32871 spectro_loss=0.13697 vocoder_loss=1.19174
+epoch=0 i=207/530 total_loss=1.54702 spectro_loss=0.17364 vocoder_loss=1.37338
+epoch=0 i=208/530 total_loss=0.91067 spectro_loss=0.13400 vocoder_loss=0.77667
+epoch=0 i=209/530 total_loss=3.45096 spectro_loss=0.51757 vocoder_loss=2.93339
+epoch=0 i=210/530 total_loss=2.72280 spectro_loss=0.38122 vocoder_loss=2.34158
+epoch=0 i=211/530 total_loss=1.94582 spectro_loss=0.23205 vocoder_loss=1.71377
+epoch=0 i=212/530 total_loss=1.74342 spectro_loss=0.18865 vocoder_loss=1.55476
+epoch=0 i=213/530 total_loss=2.84613 spectro_loss=0.33835 vocoder_loss=2.50778
+epoch=0 i=214/530 total_loss=1.55017 spectro_loss=0.21453 vocoder_loss=1.33563
+epoch=0 i=215/530 total_loss=2.84035 spectro_loss=0.36489 vocoder_loss=2.47546
+epoch=0 i=216/530 total_loss=3.23535 spectro_loss=0.37279 vocoder_loss=2.86256
+epoch=0 i=217/530 total_loss=1.58254 spectro_loss=0.17165 vocoder_loss=1.41089
+epoch=0 i=218/530 total_loss=1.32299 spectro_loss=0.14181 vocoder_loss=1.18118
+epoch=0 i=219/530 total_loss=1.78633 spectro_loss=0.22877 vocoder_loss=1.55756
+epoch=0 i=220/530 total_loss=2.27052 spectro_loss=0.30608 vocoder_loss=1.96444
+epoch=0 i=221/530 total_loss=2.10519 spectro_loss=0.26322 vocoder_loss=1.84197
+epoch=0 i=222/530 total_loss=2.60138 spectro_loss=0.35500 vocoder_loss=2.24637
+epoch=0 i=223/530 total_loss=2.58929 spectro_loss=0.47127 vocoder_loss=2.11803
+epoch=0 i=224/530 total_loss=2.63640 spectro_loss=0.31264 vocoder_loss=2.32376
+epoch=0 i=225/530 total_loss=3.78345 spectro_loss=0.46739 vocoder_loss=3.31606
+epoch=0 i=226/530 total_loss=1.85613 spectro_loss=0.20434 vocoder_loss=1.65179
+epoch=0 i=227/530 total_loss=3.84071 spectro_loss=0.39915 vocoder_loss=3.44156
+epoch=0 i=228/530 total_loss=1.99790 spectro_loss=0.25069 vocoder_loss=1.74721
+epoch=0 i=229/530 total_loss=2.68047 spectro_loss=0.31595 vocoder_loss=2.36452
+epoch=0 i=230/530 total_loss=1.98940 spectro_loss=0.28390 vocoder_loss=1.70550
+epoch=0 i=231/530 total_loss=1.87632 spectro_loss=0.18215 vocoder_loss=1.69417
+epoch=0 i=232/530 total_loss=3.50701 spectro_loss=0.46356 vocoder_loss=3.04345
+epoch=0 i=233/530 total_loss=3.34816 spectro_loss=0.42429 vocoder_loss=2.92387
+epoch=0 i=234/530 total_loss=1.25315 spectro_loss=0.19455 vocoder_loss=1.05861
+epoch=0 i=235/530 total_loss=1.80779 spectro_loss=0.22489 vocoder_loss=1.58290
+epoch=0 i=236/530 total_loss=2.34412 spectro_loss=0.29072 vocoder_loss=2.05340
+epoch=0 i=237/530 total_loss=4.30118 spectro_loss=0.58974 vocoder_loss=3.71144
+epoch=0 i=238/530 total_loss=2.61369 spectro_loss=0.26142 vocoder_loss=2.35227
+epoch=0 i=239/530 total_loss=2.51763 spectro_loss=0.24478 vocoder_loss=2.27285
+epoch=0 i=240/530 total_loss=1.58846 spectro_loss=0.16289 vocoder_loss=1.42557
+epoch=0 i=241/530 total_loss=2.67005 spectro_loss=0.24812 vocoder_loss=2.42193
+epoch=0 i=242/530 total_loss=2.41423 spectro_loss=0.31938 vocoder_loss=2.09486
+epoch=0 i=243/530 total_loss=2.09257 spectro_loss=0.38233 vocoder_loss=1.71024
+epoch=0 i=244/530 total_loss=7.11675 spectro_loss=0.24098 vocoder_loss=6.87578
+epoch=0 i=245/530 total_loss=3.19398 spectro_loss=0.41553 vocoder_loss=2.77845
+epoch=0 i=246/530 total_loss=2.67154 spectro_loss=0.30634 vocoder_loss=2.36521
+epoch=0 i=247/530 total_loss=3.45847 spectro_loss=0.39574 vocoder_loss=3.06273
+epoch=0 i=248/530 total_loss=3.17490 spectro_loss=0.39951 vocoder_loss=2.77539
+epoch=0 i=249/530 total_loss=2.61755 spectro_loss=0.35735 vocoder_loss=2.26020
+Saving checkpoint 300305
+Saved
+epoch=0 i=250/530 total_loss=1.85328 spectro_loss=0.17954 vocoder_loss=1.67374
+epoch=0 i=251/530 total_loss=3.22123 spectro_loss=0.43274 vocoder_loss=2.78849
+epoch=0 i=252/530 total_loss=2.10585 spectro_loss=0.28542 vocoder_loss=1.82043
+epoch=0 i=253/530 total_loss=1.70351 spectro_loss=0.20476 vocoder_loss=1.49874
+epoch=0 i=254/530 total_loss=2.74073 spectro_loss=0.34483 vocoder_loss=2.39590
+epoch=0 i=255/530 total_loss=4.24336 spectro_loss=0.50168 vocoder_loss=3.74168
+epoch=0 i=256/530 total_loss=2.29126 spectro_loss=0.24210 vocoder_loss=2.04917
+epoch=0 i=257/530 total_loss=1.82242 spectro_loss=0.16324 vocoder_loss=1.65919
+epoch=0 i=258/530 total_loss=2.20029 spectro_loss=0.29578 vocoder_loss=1.90451
+epoch=0 i=259/530 total_loss=3.47152 spectro_loss=0.31238 vocoder_loss=3.15914
+epoch=0 i=260/530 total_loss=3.29701 spectro_loss=0.39922 vocoder_loss=2.89780
+epoch=0 i=261/530 total_loss=2.81492 spectro_loss=0.28099 vocoder_loss=2.53393
+epoch=0 i=262/530 total_loss=2.26829 spectro_loss=0.28234 vocoder_loss=1.98595
+epoch=0 i=263/530 total_loss=2.13568 spectro_loss=0.32203 vocoder_loss=1.81365
+epoch=0 i=264/530 total_loss=2.54397 spectro_loss=0.31992 vocoder_loss=2.22405
+epoch=0 i=265/530 total_loss=1.07022 spectro_loss=0.11686 vocoder_loss=0.95336
+epoch=0 i=266/530 total_loss=2.57806 spectro_loss=0.34543 vocoder_loss=2.23264
+epoch=0 i=267/530 total_loss=1.63660 spectro_loss=0.20787 vocoder_loss=1.42873
+epoch=0 i=268/530 total_loss=1.44629 spectro_loss=0.13248 vocoder_loss=1.31381
+epoch=0 i=269/530 total_loss=3.46867 spectro_loss=0.63610 vocoder_loss=2.83256
+epoch=0 i=270/530 total_loss=1.80854 spectro_loss=0.24994 vocoder_loss=1.55860
+epoch=0 i=271/530 total_loss=2.29082 spectro_loss=0.15394 vocoder_loss=2.13688
+epoch=0 i=272/530 total_loss=3.22857 spectro_loss=0.23904 vocoder_loss=2.98953
+epoch=0 i=273/530 total_loss=3.66935 spectro_loss=0.27659 vocoder_loss=3.39276
+epoch=0 i=274/530 total_loss=3.01676 spectro_loss=0.19033 vocoder_loss=2.82643
+epoch=0 i=275/530 total_loss=2.60927 spectro_loss=0.30011 vocoder_loss=2.30916
+epoch=0 i=276/530 total_loss=1.99410 spectro_loss=0.23232 vocoder_loss=1.76178
+epoch=0 i=277/530 total_loss=2.12653 spectro_loss=0.23580 vocoder_loss=1.89073
+epoch=0 i=278/530 total_loss=3.20686 spectro_loss=0.43592 vocoder_loss=2.77093
+epoch=0 i=279/530 total_loss=2.63106 spectro_loss=0.36406 vocoder_loss=2.26700
+epoch=0 i=280/530 total_loss=2.95703 spectro_loss=0.43652 vocoder_loss=2.52051
+epoch=0 i=281/530 total_loss=2.12917 spectro_loss=0.27253 vocoder_loss=1.85664
+epoch=0 i=282/530 total_loss=1.76544 spectro_loss=0.21064 vocoder_loss=1.55480
+epoch=0 i=283/530 total_loss=1.53422 spectro_loss=0.22042 vocoder_loss=1.31380
+epoch=0 i=284/530 total_loss=2.32539 spectro_loss=0.40614 vocoder_loss=1.91925
+epoch=0 i=285/530 total_loss=1.98780 spectro_loss=0.25858 vocoder_loss=1.72922
+epoch=0 i=286/530 total_loss=1.82692 spectro_loss=0.26476 vocoder_loss=1.56216
+epoch=0 i=287/530 total_loss=1.50413 spectro_loss=0.23094 vocoder_loss=1.27319
+epoch=0 i=288/530 total_loss=1.35003 spectro_loss=0.20006 vocoder_loss=1.14997
+epoch=0 i=289/530 total_loss=1.25321 spectro_loss=0.18780 vocoder_loss=1.06540
+epoch=0 i=290/530 total_loss=1.95737 spectro_loss=0.40967 vocoder_loss=1.54770
+epoch=0 i=291/530 total_loss=2.09355 spectro_loss=0.31151 vocoder_loss=1.78205
+epoch=0 i=292/530 total_loss=3.53287 spectro_loss=0.34895 vocoder_loss=3.18392
+epoch=0 i=293/530 total_loss=4.82331 spectro_loss=0.54408 vocoder_loss=4.27924
+epoch=0 i=294/530 total_loss=3.34842 spectro_loss=0.32856 vocoder_loss=3.01986
+epoch=0 i=295/530 total_loss=2.99770 spectro_loss=0.38535 vocoder_loss=2.61234
+epoch=0 i=296/530 total_loss=1.63164 spectro_loss=0.18844 vocoder_loss=1.44320
+epoch=0 i=297/530 total_loss=2.31067 spectro_loss=0.23427 vocoder_loss=2.07640
+epoch=0 i=298/530 total_loss=2.28404 spectro_loss=0.23355 vocoder_loss=2.05049
+epoch=0 i=299/530 total_loss=3.29038 spectro_loss=0.40272 vocoder_loss=2.88767
+Saving checkpoint 300355
+Saved
+epoch=0 i=300/530 total_loss=2.97985 spectro_loss=0.28232 vocoder_loss=2.69753
+epoch=0 i=301/530 total_loss=2.64715 spectro_loss=0.44447 vocoder_loss=2.20268
+epoch=0 i=302/530 total_loss=1.30482 spectro_loss=0.16509 vocoder_loss=1.13973
+epoch=0 i=303/530 total_loss=2.64967 spectro_loss=0.35898 vocoder_loss=2.29070
+epoch=0 i=304/530 total_loss=2.78883 spectro_loss=0.42166 vocoder_loss=2.36718
+epoch=0 i=305/530 total_loss=2.73301 spectro_loss=0.36971 vocoder_loss=2.36330
+epoch=0 i=306/530 total_loss=1.71787 spectro_loss=0.20886 vocoder_loss=1.50902
+epoch=0 i=307/530 total_loss=2.24295 spectro_loss=0.20859 vocoder_loss=2.03437
+epoch=0 i=308/530 total_loss=3.28359 spectro_loss=0.45138 vocoder_loss=2.83221
+epoch=0 i=309/530 total_loss=3.00730 spectro_loss=0.45133 vocoder_loss=2.55596
+epoch=0 i=310/530 total_loss=1.90563 spectro_loss=0.27632 vocoder_loss=1.62931
+epoch=0 i=311/530 total_loss=3.06496 spectro_loss=0.49286 vocoder_loss=2.57211
+epoch=0 i=312/530 total_loss=1.24542 spectro_loss=0.15782 vocoder_loss=1.08760
+epoch=0 i=313/530 total_loss=2.87683 spectro_loss=0.59853 vocoder_loss=2.27830
+epoch=0 i=314/530 total_loss=1.93259 spectro_loss=0.31505 vocoder_loss=1.61755
+epoch=0 i=315/530 total_loss=4.27741 spectro_loss=0.81304 vocoder_loss=3.46437
+epoch=0 i=316/530 total_loss=1.93470 spectro_loss=0.30849 vocoder_loss=1.62621
+epoch=0 i=317/530 total_loss=2.91165 spectro_loss=0.37822 vocoder_loss=2.53344
+epoch=0 i=318/530 total_loss=3.38549 spectro_loss=0.43824 vocoder_loss=2.94725
+epoch=0 i=319/530 total_loss=1.64198 spectro_loss=0.22610 vocoder_loss=1.41587
+epoch=0 i=320/530 total_loss=2.67639 spectro_loss=0.30045 vocoder_loss=2.37594
+epoch=0 i=321/530 total_loss=3.16062 spectro_loss=0.47754 vocoder_loss=2.68309
+epoch=0 i=322/530 total_loss=1.76164 spectro_loss=0.27109 vocoder_loss=1.49056
+epoch=0 i=323/530 total_loss=2.66846 spectro_loss=0.52754 vocoder_loss=2.14092
+epoch=0 i=324/530 total_loss=2.29783 spectro_loss=0.23685 vocoder_loss=2.06099
+epoch=0 i=325/530 total_loss=1.83083 spectro_loss=0.17791 vocoder_loss=1.65292
+epoch=0 i=326/530 total_loss=1.73546 spectro_loss=0.27163 vocoder_loss=1.46383
+epoch=0 i=327/530 total_loss=2.47871 spectro_loss=0.42950 vocoder_loss=2.04921
+epoch=0 i=328/530 total_loss=1.64684 spectro_loss=0.22344 vocoder_loss=1.42340
+epoch=0 i=329/530 total_loss=2.31613 spectro_loss=0.43870 vocoder_loss=1.87743
+epoch=0 i=330/530 total_loss=1.21540 spectro_loss=0.19401 vocoder_loss=1.02139
+epoch=0 i=331/530 total_loss=1.01074 spectro_loss=0.16622 vocoder_loss=0.84453
+epoch=0 i=332/530 total_loss=2.17721 spectro_loss=0.47247 vocoder_loss=1.70474
+epoch=0 i=333/530 total_loss=0.86985 spectro_loss=0.14980 vocoder_loss=0.72005
+epoch=0 i=334/530 total_loss=1.83285 spectro_loss=0.39059 vocoder_loss=1.44225
+epoch=0 i=335/530 total_loss=1.70953 spectro_loss=0.38003 vocoder_loss=1.32950
+epoch=0 i=336/530 total_loss=1.19417 spectro_loss=0.26267 vocoder_loss=0.93150
+epoch=0 i=337/530 total_loss=1.13227 spectro_loss=0.22097 vocoder_loss=0.91129

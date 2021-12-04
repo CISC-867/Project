@@ -34,6 +34,18 @@ def get_dataset():
     import data.VCTK
     return data.VCTK.VCTKDataset("VCTK-Corpus-smaller/")
 
+# F.cross_entropy keeps giving negative numbers
+# so this hack should fix that I guess.
+class spicy_loss:
+    def __init__(self, device) -> None:
+        self.device = device
+    def __call__(self, y_hat, y) -> float:
+        return (y - y_hat).abs().sum()
+        # offset = torch.ones(y_hat.shape) * 1.2
+        # offset = offset.to(self.device)
+        # y_hat, y = y_hat + offset, y + offset
+        # return F.cross_entropy(y_hat, y)
+
 class Trainer:
     def __init__(self,
         model=None,
@@ -72,7 +84,9 @@ class Trainer:
         self.vocoder_optimizer = torch.optim.Adam(vocoder.parameters(), lr=0.001)  
         self.spectro_loss_func = nn.L1Loss()
         # self.vocoder_loss_func = nn.CrossEntropyLoss()
-        self.vocoder_loss_func = F.cross_entropy
+        # self.vocoder_loss_func = F.cross_entropy # this shit don't work right, giving negative values
+        self.vocoder_loss_func = spicy_loss(device)
+        # self.vocoder_loss_func = nn.CTCLoss()
 
     def train_step(self, entry):
         # ignore text
@@ -97,14 +111,16 @@ class Trainer:
         mels = y_pred_spectros
         y_pred_wavs = self.vocoder( x, mels )
         y_pred_wavs_temp = y_pred_wavs
-        y_pred_wavs = y_pred_wavs.amax(dim=-1) # collapse 512 channel wav into 1 channel
+
+        ## this is bad.
+        # y_pred_wavs = y_pred_wavs.amax(dim=-1) # collapse 512 channel wav into 1 channel
+        y_pred_wavs = y_pred_wavs[:,:,-1] # take the last guess as output
 
         # this 0.001 ratio is not mentioned in the paper
         # vocoder_loss = 0.001 * self.vocoder_loss_func(audios, y_pred_wavs)
         vocoder_loss = 0.001 * self.vocoder_loss_func(y_pred_wavs, audios)
 
         total_loss = spectro_loss + vocoder_loss
-
 
         self.model_optimizer.zero_grad()
         self.vocoder_optimizer.zero_grad()
@@ -144,6 +160,7 @@ class Trainer:
 
         for epoch in range(epochs):
             for i, entry in enumerate(dataset.batched(batch_size)):
+                self.checkpoint += 1
                 total_loss, spectro_loss, vocoder_loss, _ = self.train_step(entry)
                 total_loss = total_loss.detach().to(cpu).numpy()
                 spectro_loss = spectro_loss.detach().to(cpu).numpy()
@@ -161,23 +178,29 @@ class Trainer:
                     writer.add_scalar('spectro_loss', spectro_loss, time)
                     writer.add_scalar('vocoder_loss', vocoder_loss, time)
                 if (i+1) % save_every_n == 0:
-                    self.checkpoint += (i+1)
                     self.save()
     
     def save(self):
-        print(f"Saving checkpoint {self.checkpoint}")
+        try: # ignore pipe errors when ctrl+c used
+            print(f"Saving checkpoint {self.checkpoint}")
+        except BrokenPipeError:
+            pass
         Trainer.save_as(self.model, f"model{self.checkpoint}.pth")
         Trainer.save_as(self.vocoder, f"model{self.checkpoint}_vocoder.pth")
-        print("Saved")
+        try:
+            print("Saved")
+        except BrokenPipeError:
+            pass
+            
 
     @classmethod
     def show_loss(self, epoch, i, total_loss, spectro_loss, vocoder_loss):
         print(
             f"epoch={epoch}",
             f"i={i}",
-            f"total loss={total_loss:.5f}",
-            f"spectro loss={spectro_loss:.5f}",
-            f"vocoder loss={vocoder_loss:.5f}",
+            f"total_loss={total_loss:.5f}",
+            f"spectro_loss={spectro_loss:.5f}",
+            f"vocoder_loss={vocoder_loss:.5f}",
         )
 
     @classmethod
