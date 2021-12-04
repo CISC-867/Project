@@ -113,6 +113,7 @@ class Trainer:
         ## not sure if this works
         # del y_pred_spectro
 
+        # last two values used for debugging only
         return total_loss, spectro_loss, vocoder_loss, y_pred_spectros_temp, y_pred_wavs
 
 

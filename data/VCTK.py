@@ -93,15 +93,22 @@ class VCTKDataset(torch.utils.data.Dataset):
         text_batch = []
         clip_batch = []
         spectro_batch = []
-        for i, entry in enumerate(self):
-            text,clips,spectros = entry
+
+        for i, (text,clips,spectros) in enumerate(self):
+            # add to queue
             text_batch += [text] * len(clips) # ensure we know which transcript belongs to which wav/spectro
             clip_batch += clips
             spectro_batch += spectros
-            if (i+1) % batch_size==0 or i == len(self) - 1:
-                yield text_batch, torch.stack(clip_batch), torch.stack(spectro_batch)
-                text_batch.clear()
-                clip_batch.clear()
-                spectro_batch.clear()
+            
+            # batch ready to be sent out
+            if len(text_batch) >= batch_size or i == len(self) - 1:
+                # send out the batch
+                yield text_batch[:batch_size],\
+                    torch.stack(clip_batch[:batch_size]),\
+                    torch.stack(spectro_batch[:batch_size])
+                # remove the sent batch
+                text_batch = text_batch[batch_size:]
+                clip_batch = clip_batch[batch_size:]
+                spectro_batch = spectro_batch[batch_size:]
 
 
