@@ -88,7 +88,7 @@ class Trainer:
         self.vocoder_loss_func = spicy_loss(device)
         # self.vocoder_loss_func = nn.CTCLoss()
 
-    def train_step(self, entry):
+    def train_step(self, entry, eval=False):
         # ignore text
         _, audios, spectros = entry
         audios = audios.to(self.device)
@@ -115,6 +115,9 @@ class Trainer:
         ## this is bad.
         # y_pred_wavs = y_pred_wavs.amax(dim=-1) # collapse 512 channel wav into 1 channel
         y_pred_wavs = y_pred_wavs[:,:,-1] # take the last guess as output
+
+        if eval:
+            return y_pred_spectros_temp, y_pred_wavs
 
         # this 0.001 ratio is not mentioned in the paper
         # vocoder_loss = 0.001 * self.vocoder_loss_func(audios, y_pred_wavs)
