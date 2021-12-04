@@ -123,24 +123,38 @@ class Trainer:
         epochs=10,
         save_every_n=10,
         log_every_n=1,
-        batch_size=5
+        batch_size=5,
+        run_name="runs/run1"
     ):
         if dataset is None:
             dataset = get_dataset()
 
         print(f"Beginning training {epochs} epochs, logging every {log_every_n}, saving every {save_every_n}.")
         
+        import math
+        total_batches = math.ceil(len(dataset)/batch_size)
+
+        import torch.utils.tensorboard
+        writer = torch.utils.tensorboard.SummaryWriter(run_name)
+
         for epoch in range(epochs):
-            for i, entry in enumerate(dataset):
+            for i, entry in enumerate(dataset.batched(batch_size)):
                 losses = self.train_step(entry)[:3] # ignore predicted values
                 if (i+1) % log_every_n == 0:
-                    Trainer.show_loss(epoch, i, *losses)
+                    Trainer.show_loss(epoch, f"{i}/{total_batches}", *losses)
+                    time=epoch*total_batches + (i+1)*batch_size
+                    writer.add_scalar('total loss', losses[0], time)
+                    writer.add_scalar('spectro loss', losses[1], time)
+                    writer.add_scalar('wav loss', losses[2], time)
                 if (i+1) % save_every_n == 0:
                     self.checkpoint += (i+1)
-                    print(f"Saving checkpoint {self.checkpoint}")
-                    Trainer.save_as(self.model, f"model{self.checkpoint}.pth")
-                    Trainer.save_as(self.vocoder, f"model{self.checkpoint}_vocoder.pth")
-                    print("Saved")
+                    self.save()
+    
+    def save(self):
+        print(f"Saving checkpoint {self.checkpoint}")
+        Trainer.save_as(self.model, f"model{self.checkpoint}.pth")
+        Trainer.save_as(self.vocoder, f"model{self.checkpoint}_vocoder.pth")
+        print("Saved")
 
     @classmethod
     def show_loss(self, epoch, i, total_loss, spectro_loss, vocoder_loss):
