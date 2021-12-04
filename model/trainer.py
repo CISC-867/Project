@@ -121,7 +121,8 @@ class Trainer:
         dataset=None,
         epochs=10,
         save_every_n=10,
-        log_every_n=1
+        log_every_n=1,
+        batch_size=5
     ):
         if dataset is None:
             dataset = get_dataset()

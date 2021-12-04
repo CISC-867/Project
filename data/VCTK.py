@@ -6,7 +6,7 @@ import numpy as np
 import math
 
 class VCTKDataset(torch.utils.data.Dataset):
-    def __init__(self, path) -> None:
+    def __init__(self, path, randomize=True) -> None:
         super().__init__()
         self.sample_rate=16000
         self.win_length=800
@@ -23,6 +23,9 @@ class VCTKDataset(torch.utils.data.Dataset):
             assert os.path.basename(os.path.splitext(text)[0]) == os.path.basename(os.path.splitext(audio)[0])
 
             self.data += [(text, audio)]
+        
+        if randomize:
+            np.random.shuffle(self.data)
 
     def __getitem__(self, index):
         text, audio = self.data[index]
@@ -85,5 +88,21 @@ class VCTKDataset(torch.utils.data.Dataset):
         for v in audios:
             fix, ax = plt.subplots()
             img = librosa.display.waveplot(v.detach().numpy(), sr=16000)
+
+    def batched(self, batch_size):
+        text_batch = []
+        clip_batch = []
+        spectro_batch = []
+        for i, entry in enumerate(self):
+            text,clips,spectros = entry
+            print(text, clips.shape, spectros.shape, len(clips))
+            text_batch += [text] * len(clips) # ensure we know which transcript belongs to which wav/spectro
+            clip_batch += clips
+            spectro_batch += spectros
+            if (i+1) % batch_size==0 or i == len(self) - 1:
+                yield text_batch, torch.stack(clip_batch), torch.stack(spectro_batch)
+                text_batch.clear()
+                clip_batch.clear()
+                spectro_batch.clear()
 
 
