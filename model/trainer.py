@@ -132,7 +132,7 @@ class Trainer:
         if dataset is None:
             dataset = get_dataset()
 
-        print(f"Beginning training {epochs} epochs, logging every {log_every_n}, saving every {save_every_n}.")
+        print(f"Beginning training {epochs} epochs, logging every {log_every_n}, saving every {save_every_n}, batch size {batch_size}.")
         
         import math
         total_batches = math.ceil(len(dataset)/batch_size)

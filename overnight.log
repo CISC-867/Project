@@ -1,0 +1,8 @@
+Using default model
+Using default vocoder
+Loading models from checkpoint 7
+Models loaded
+Beginning training 500 epochs, logging every 1, saving every 50.
+epoch=0 i=0/530 total loss=1.55704 spectro loss=1.55197 vocoder loss=0.00508
+epoch=0 i=1/530 total loss=0.64213 spectro loss=0.65470 vocoder loss=-0.01257
+epoch=0 i=2/530 total loss=0.45329 spectro loss=0.45567 vocoder loss=-0.00237
