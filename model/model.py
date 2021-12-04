@@ -76,3 +76,4 @@ class SpectrogramModel(nn.Module):
 
     def get_param_count(self):
         return sum([len(x) for x in list(self.parameters())])
+    
