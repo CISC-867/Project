@@ -64,16 +64,18 @@ class Trainer:
 
         if checkpoint is None:
             checkpoint = 0
-        self.model = model
-        self.vocoder = vocoder
+        self.model = model.to(device)
+        self.vocoder = vocoder.to(device)
         self.device = device
         self.checkpoint = checkpoint
         self.model_optimizer = torch.optim.Adam(model.parameters(), lr=0.001)  
         self.vocoder_optimizer = torch.optim.Adam(vocoder.parameters(), lr=0.001)  
         self.spectro_loss_func = nn.L1Loss()
-        self.vocoder_loss_func = F.cross_entropy
+        self.vocoder_loss_func = nn.CrossEntropyLoss()
 
-    def train_step(self, audios, spectrogram):
+    def train_step(self, entry):
+        # ignore text
+        _, audios, spectrogram = entry
         y_pred_spectros = self.model(spectrogram)
 
         # fix model returning 128 instead of 129 time steps in the spectrogram
@@ -115,34 +117,34 @@ class Trainer:
         dataset=None,
         epochs=10,
         save_every_n=10,
+        log_every_n=1
     ):
         if dataset is None:
             dataset = get_dataset()
-
-        epochs = 10
-        save_every_n=1
-        log_every_n=1
 
         print(f"Beginning training {epochs} epochs, logging every {log_every_n}, saving every {save_every_n}.")
         
         for epoch in range(epochs):
             for i, entry in enumerate(dataset):
-                text, clips, spectros = entry
-                total, spectro, vocoder = self.train_step(clips, spectros)
+                losses = self.train_step(entry)
                 if (i+1) % log_every_n == 0:
-                    print(
-                        f"epoch={epoch}",
-                        f"i={i}",
-                        f"total loss={total.detach().numpy():.5f}",
-                        f"spectro loss={spectro.detach().numpy():.5f}",
-                        f"vocoder loss={vocoder.detach().numpy():.5f}",
-                    )
+                    Trainer.show_loss(*((epoch, i) + losses))
                 if (i+1) % save_every_n == 0:
                     self.checkpoint += (i+1)
                     print(f"Saving checkpoint {self.checkpoint}")
                     Trainer.save_as(self.model, f"model{self.checkpoint}.pth")
                     Trainer.save_as(self.vocoder, f"model{self.checkpoint}_vocoder.pth")
                     print("Saved")
+
+    @classmethod
+    def show_loss(self, epoch, i, total_loss, spectro_loss, vocoder_loss):
+        print(
+            f"epoch={epoch}",
+            f"i={i}",
+            f"total loss={total_loss.detach().numpy():.5f}",
+            f"spectro loss={spectro_loss.detach().numpy():.5f}",
+            f"vocoder loss={vocoder_loss.detach().numpy():.5f}",
+        )
 
     @classmethod
     def save_as(self, model, name, dir="checkpoints"):
