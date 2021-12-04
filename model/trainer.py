@@ -71,7 +71,8 @@ class Trainer:
         self.model_optimizer = torch.optim.Adam(model.parameters(), lr=0.001)  
         self.vocoder_optimizer = torch.optim.Adam(vocoder.parameters(), lr=0.001)  
         self.spectro_loss_func = nn.L1Loss()
-        self.vocoder_loss_func = nn.CrossEntropyLoss()
+        # self.vocoder_loss_func = nn.CrossEntropyLoss()
+        self.vocoder_loss_func = F.cross_entropy
 
     def train_step(self, entry):
         # ignore text
@@ -95,10 +96,12 @@ class Trainer:
         x = audios
         mels = y_pred_spectros
         y_pred_wavs = self.vocoder( x, mels )
+        y_pred_wavs_temp = y_pred_wavs
         y_pred_wavs = y_pred_wavs.amax(dim=-1) # collapse 512 channel wav into 1 channel
 
         # this 0.001 ratio is not mentioned in the paper
-        vocoder_loss = 0.001 * self.vocoder_loss_func(audios, y_pred_wavs)
+        # vocoder_loss = 0.001 * self.vocoder_loss_func(audios, y_pred_wavs)
+        vocoder_loss = 0.001 * self.vocoder_loss_func(y_pred_wavs, audios)
 
         total_loss = spectro_loss + vocoder_loss
 
@@ -114,7 +117,7 @@ class Trainer:
         # del y_pred_spectro
 
         # last two values used for debugging only
-        return total_loss, spectro_loss, vocoder_loss, y_pred_spectros_temp, y_pred_wavs
+        return total_loss, spectro_loss, vocoder_loss, (y_pred_spectros_temp, y_pred_wavs, y_pred_wavs_temp)
 
 
     def train(
@@ -141,7 +144,7 @@ class Trainer:
 
         for epoch in range(epochs):
             for i, entry in enumerate(dataset.batched(batch_size)):
-                total_loss, spectro_loss, vocoder_loss = self.train_step(entry)[:3] # ignore predicted values
+                total_loss, spectro_loss, vocoder_loss, _ = self.train_step(entry)
                 total_loss = total_loss.detach().to(cpu).numpy()
                 spectro_loss = spectro_loss.detach().to(cpu).numpy()
                 vocoder_loss = vocoder_loss.detach().to(cpu).numpy()
