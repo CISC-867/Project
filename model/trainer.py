@@ -62,9 +62,12 @@ class Trainer:
             Trainer.load_from(vocoder, f"model{checkpoint}_vocoder.pth")
             print("Models loaded")
 
+        if checkpoint is None:
+            checkpoint = 0
         self.model = model
         self.vocoder = vocoder
         self.device = device
+        self.checkpoint = checkpoint
         self.model_optimizer = torch.optim.Adam(model.parameters(), lr=0.001)  
         self.vocoder_optimizer = torch.optim.Adam(vocoder.parameters(), lr=0.001)  
         self.spectro_loss_func = nn.L1Loss()
@@ -117,19 +120,29 @@ class Trainer:
             dataset = get_dataset()
 
         epochs = 10
-        save_every_n=10
+        save_every_n=1
+        log_every_n=1
 
-        print(f"Beginning training {epochs} epochs, saving every {save_every_n}.")
+        print(f"Beginning training {epochs} epochs, logging every {log_every_n}, saving every {save_every_n}.")
         
         for epoch in range(epochs):
             for i, entry in enumerate(dataset):
                 text, clips, spectros = entry
                 total, spectro, vocoder = self.train_step(clips, spectros)
-                print("Total loss: ", total)
-                if i+1 % save_every_n == 0:
-                    Trainer.save_as(spectrogram_model, f"model{self.checkpoint+i}.pth")
-                    Trainer.save_as(vocoder_model, f"model{self.checkpoint+i}_vocoder.pth")
-                    self.checkpoint += i
+                if (i+1) % log_every_n == 0:
+                    print(
+                        f"epoch={epoch}",
+                        f"i={i}",
+                        f"total loss={total.detach().numpy():.5f}",
+                        f"spectro loss={spectro.detach().numpy():.5f}",
+                        f"vocoder loss={vocoder.detach().numpy():.5f}",
+                    )
+                if (i+1) % save_every_n == 0:
+                    self.checkpoint += (i+1)
+                    print(f"Saving checkpoint {self.checkpoint}")
+                    Trainer.save_as(self.model, f"model{self.checkpoint}.pth")
+                    Trainer.save_as(self.vocoder, f"model{self.checkpoint}_vocoder.pth")
+                    print("Saved")
 
     @classmethod
     def save_as(self, model, name, dir="checkpoints"):
