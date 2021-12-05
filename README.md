@@ -4,27 +4,29 @@ This repository is the official implementation of our Reproducibility Paper for 
 
 ## Requirements
 
-The implementation requires tensorflow, pandas, numpy, IPython and matplotlib.
-To install requirements:
-```setup
-pip install numpy tensorflow pandas IPython matplotlib
-```
+- pytorch
+- librosa
+- webrtcvad
+
+## Dataset downloading
+
+See `main.ipynb` for fetching WaveNet repository and VCTK datasets.
+
 ## Training
 
-To train the model in the our paper, run all cells in [CISC867Project.ipynb](https://github.com/CISC-867/Project/blob/master/CISC867Project.ipynbhttps://github.com/CISC-867/Project/blob/master/CISC867Project.ipynb). 
+Pre-training performed with `train.ipynb` and `afktrain.py`.  
+Targeted training performed with `train-targeted.ipynb` and `afktrain-targeted.py`.
 
-## Evaluation
+## Inference
 
-TODO
+See `wavgen.ipynb` for an example of using the model to output wav files.
 
-## Pre-trained Models
+## Pre-trained models
 
-A link to download pretrained models will be put here when we have some.
+Pre-trained models are available using the links below.  
+These may be deleted at some point in the future.  
+The model currently does not sound like Tom Scott, and will just reproduce the input audio at best.
 
-## Results
+https://cisc867.blob.core.windows.net/checkpoints/tom/model306255_vocoder.pth
 
-TODO
-
-## Contributing
-
-Contributing to this Github is closed to non-authors.
+https://cisc867.blob.core.windows.net/checkpoints/tom/model306255.pth
