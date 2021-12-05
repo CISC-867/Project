@@ -14,16 +14,16 @@ def get_vocoder_model():
     return models.fatchord_version.WaveRNN(
         rnn_dims=512,
         fc_dims=512,
-        bits=9, # OrigAuthor: bit depth of signal
-        pad=2, # OrigAuthor: this will pad the input so that the resnet can 'see' wider than input length
-        upsample_factors=(5, 5, 8), # OrigAuthor: NB - this needs to correctly factorise hop_length
+        bits=9,
+        pad=2,
+        upsample_factors=(5, 5, 8),
         feat_dims=80,
         compute_dims=128,
         res_out_dims=128,
         res_blocks=10,
         hop_length=200,
         sample_rate=16000,
-        mode="RAW", # OrigAuthor: either 'RAW' (softmax on raw bits) or 'MOL' (sample from mixture of logistics)
+        mode="RAW",
     )
 
 def get_spectrogram_model():
@@ -89,10 +89,8 @@ class Trainer:
         self.model_optimizer = torch.optim.Adam(model.parameters(), lr=0.001)  
         self.vocoder_optimizer = torch.optim.Adam(vocoder.parameters(), lr=0.001)  
         self.spectro_loss_func = nn.L1Loss()
-        # self.vocoder_loss_func = nn.CrossEntropyLoss()
-        # self.vocoder_loss_func = F.cross_entropy # this shit don't work right, giving negative values
+        # self.vocoder_loss_func = F.cross_entropy # this doesn't work right, giving negative values
         self.vocoder_loss_func = spicy_loss(device)
-        # self.vocoder_loss_func = nn.CTCLoss()
 
     def train_step(self, entry, eval=False):
         # ignore text
@@ -137,11 +135,7 @@ class Trainer:
         self.model_optimizer.step()
         self.vocoder_optimizer.step()
 
-        ## free tensor from gpu memory?
-        ## not sure if this works
-        # del y_pred_spectro
-
-        # last two values used for debugging only
+        # last tuple used for debugging, inference time returns earlier above
         return total_loss, spectro_loss, vocoder_loss, (y_pred_spectros_temp, y_pred_wavs, y_pred_wavs_temp)
 
 
